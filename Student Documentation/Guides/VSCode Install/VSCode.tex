@@ -1,0 +1,77 @@
+\documentclass[11pt]{report}
+\usepackage{fullpage}
+\usepackage{lingmacros}
+\usepackage{tree-dvips}
+\usepackage{minted}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{keystroke}
+\usepackage{url}
+
+\graphicspath{{./images/}}
+
+\newcommand{\WindowsLogo}{\raisebox{-0.1em}{%
+  \includegraphics[height=0.8em]{Windows_3_logo_simplified.png}}}
+\newcommand{\WinKey}{\keystroke{\WindowsLogo}}
+
+\newcommand*{\Cmd}{\keystroke{Cmd}}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Trainig with GPU},
+    pdfpagemode=FullScreen,
+    }
+
+
+\begin{document}
+    \title{APSC 258: Setup VSCode For Developing Machine Learning Projects}
+    \author{Andre Cox}
+
+
+    \maketitle
+    \tableofcontents
+
+    \chapter{Introduction}
+
+    \section{The Problem}
+
+    When working with machine learning projects you will need an editor that can allow you to easily edit and run your code.
+    You may choose to use Google Colab however recent versions of Colab have limited the GPU compute time and always need to be online.
+    A good option for machine learning projects is VSCode. VSCode is a free open source editor that can be installed on your computer that supports almost all programming languages including Python.
+
+    \section{Prerequisites}
+
+    To install VSCode you will need a Windows, Mac or Linux computer. This install guide will be split into 3 parts for each operating system.
+
+
+    \chapter{Installation}
+    \section{Windows}
+
+    To install VSCode on Windows follow the steps below.
+
+    \begin{itemize}
+        \item Press the keyboard shortcut \WinKey + \keystroke{R} 
+        \item Type in "cmd" and press \Enter
+        \item A new window should open. Type in "winget install -e --id Microsoft.VisualStudioCode" and press \Enter
+        \item Once this finishes VSCode should be installed.    
+    \end{itemize}
+
+    \section{Mac}
+    \begin{itemize}
+        \item You can install VSCode by following the instructions on the website. Found \href{https://code.visualstudio.com/docs/setup/mac}{here}.
+    \end{itemize}
+
+    \section{Linux}
+        \begin{itemize}
+            \item You can install VSCode by following the instructions on the website. Found \href{https://code.visualstudio.com/docs/setup/linux}{here}.
+            \item You may be able to use apt, yum or pkg to install VSCode. This depends if it's in your package repository.
+        \end{itemize}
+
+    \chapter{Testing}
+
+    Once installed you should be able to open VSCode and start editing your code. VSCode has built in support for Jupyter Notebooks just like Google Colab.
+
+\end{document}
