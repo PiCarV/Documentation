@@ -4,6 +4,7 @@
 \usepackage{minted}
 \usepackage{graphicx}
 \usepackage{awesomebox}
+\usepackage{hyperref}
 
 \graphicspath{{./images/}}
 
@@ -73,6 +74,25 @@ To test the PiCarV you will first need to charge the batteries by placing them i
 }
 
 Once the charger has finished the batteries can be placed into the PiCarV. Next switch on the PiCarV. You should see the lights on the side of the PiCarV start to blink. You can check if everything is working by opening your WiFi settings on your phone or laptop and checking if a hotspot has been created. It should be called PiCarV followed by a string of letters and numbers. Write this down as it can be hard to know what hotspot to connect to when lots of PiCars are running at the same time.
+
+\section{Connecting the controller to the PiCarV}
+We provide a simple controller app that you can use to check that your PiCarV is working. You can download the app from the following link. 
+% include hyperlink
+\href{https://github.com/PiCarV/Controller/releases}{PiCar Controller} Make sure you get the correct version for your operating system. EXE for windows and DMG for mac.
+
+
+Once you have installed the controller you can connect your computer to the PiCar hotspot the password is "raspberry". Next you can open the controller app and enter in the IP address of the PiCarV in the top right corner. The IP address is "192.168.0.10". Once this is entered the text that says "connected: false" should change to "connected: true" and you should see a live stream from the camera. Try to have a go controlling the PiCarV with the wasd or arrow keys. 
+
+% show image
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{controller.png}
+    \caption{Controller}
+    \label{fig:Controller}
+\end{figure}
+
+\chapter{Finishing Up}
+Now we can control the PiCar through a simple application. The PiCar is ready for your next lab where you will learn how to send your own commands to run the PiCar using Python.
 
 \end{document}
 
