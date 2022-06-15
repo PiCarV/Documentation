@@ -5,6 +5,9 @@
 \usepackage{graphicx}
 \usepackage{awesomebox}
 \usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}, margin=0.75in]{geometry}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[default,light,black]{roboto}
 
 \hypersetup{
     colorlinks=true,
@@ -41,7 +44,7 @@
     \section{Setup}
     On your laptop you will need to install VSCode and Python 3. Once installed open VSCode and click File $\Rightarrow$ Open Folder and select a convenient folder. This will be your working directory (Where our project files for this lab will be stored). 
     Now you can create a new Python file by clicking File $\Rightarrow$ New File and selecting Python. You can call this file straight.py. Now we need to run some commands to install the required packages. Click on Terminal $\Rightarrow$ New Terminal. A Terminal should open at the bottom of the screen. Type the following commands into the Terminal: 
-    \begin{minted}[linenos, fontsize=\small]{shell}
+    \begin{minted}[fontfamily=courier, style=monokai, breaklines, frame=single,framesep=10pt]{shell}
     pip install socketio 
     \end{minted}
     This will install the socketio package. We will use this to connect to the PiCar.
@@ -49,7 +52,7 @@
     \section{Code}
     Now we will write some code to make the PiCar move forwards then backwards. 
     This code will be written in steps and should guide you through the process of writing code to control the PiCar. The first step is to import the packages.
-    \begin{minted}[linenos, fontsize=\small]{python}
+    \begin{minted}[linenos, fontfamily=courier, style=monokai, bgcolor=black, breaklines]{python}
     # first we import socketio we use this to connect to the PiCar
     import socketio 
     # next we import time we will use this to delay the code
@@ -58,7 +61,7 @@
 
     Next we will create a socketio object. This is a special variable that contains functions that allow us to communicate with the PiCar.
 
-    \begin{minted}[linenos, fontsize=\small]{python}
+    \begin{minted}[linenos, fontfamily=courier, style=monokai, bgcolor=black, breaklines]{python}
     # create a socketio object
     # socketio is a module that allows us to easily use websockets.
     # Websockets are a protocol that allows two programs to communicate with each other in real time
@@ -68,7 +71,7 @@
 
     Now we will tell socketio to connect to the PiCar. To do this we will need to know the IP address of the PiCar. An IP address is essentially a number that represents the location of a computer on the internet. In our instance we need to know where the Raspberry Pi is located to connect to it. Because all of the PiCar's are running the same software the IP address will always be "192.168.0.10" Let's write some code to do this.
 
-    \begin{minted}[linenos, fontsize=\small]{python}
+    \begin{minted}[linenos, fontfamily=courier, style=monokai, bgcolor=black, breaklines]{python}
     # connect to the PiCar
     # connects using 192.168.0.10:3000
     # we try to connect if we fail we tell the user 
@@ -80,9 +83,9 @@
         print("Check that your laptop is connected to the PiCar network")
     \end{minted}
 
-    Now you may have noticed that the IP address ends with :3000. This is called a port, we use ports because we may have multiple services that we may want to connect to. For instance when you visit a website that uses port 80 or 443, Remote Desktop uses port 3389. In our case our socket server runs on port 3000. Now we understand what's going on lets actually make our car move!
+    Now you may have noticed that the IP address ends with :3000. This is called a port, we use ports because we may have multiple services that we may want to connect to. For instance when you visit a website that uses port 443, Remote Desktop uses port 3389. In our case our socket server runs on port 3000, later we'll learn about another service running on the PiCar. Now we understand why the above code works we can now make the PiCar move!
 
-    \begin{minted}[linenos, fontsize=\small]{python}
+    \begin{minted}[linenos, fontfamily=courier, style=monokai, bgcolor=black, breaklines]{python}
     # now we can start moving the car
     # we set the angle of the steering to 90 degrees
     # this is the middle position (180 being fully right and 0 being fully left)
