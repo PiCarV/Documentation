@@ -7,6 +7,9 @@
 \usepackage{hyperref}
 \usepackage{float} % stops images from moving around
 \usepackage[a4paper, total={6in, 8in}, margin=0.75in]{geometry}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
 \RequirePackage[T1]{fontenc}
 \RequirePackage[default,light,black]{roboto}
 
@@ -29,6 +32,8 @@
     \maketitle
     \tableofcontents
 
+    \clearpage
+
     \chapter{Introduction}
 
     \section{Authors Note}
@@ -43,6 +48,9 @@
 
     \section{Introducing the Self Driving Car Project}
     Over the course of the semester we will be creating a rudimentary self driving car. As it is impractical to use a car to drive around in the real world, we will use a small Remote Controlled Car. This car will have a camera that can see the "road" which we will be made of painters tape. At the end of the semester we will have a competition to see how capable each teams car is.
+
+    % page break
+    \clearpage
 
     \chapter{Start of the Lab}
 

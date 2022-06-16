@@ -6,6 +6,9 @@
 \usepackage{awesomebox}
 \usepackage{hyperref}
 \usepackage[a4paper, total={6in, 8in}, margin=0.75in]{geometry}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
 \RequirePackage[T1]{fontenc}
 \RequirePackage[default,light,black]{roboto}
 
@@ -24,44 +27,60 @@
 \author{Andre Cox}
 
 \begin{document}
-    \maketitle
-    \tableofcontents
+\maketitle
+\tableofcontents
 
+% page break
+\clearpage
 
-    \chapter{Introduction}
-    In the first lab you where able to control the PiCar using the provided controller software. In this lab you will see how we can use Python to control the PiCar. To do this we will explain how to use an API (Application Programming Interface).
+\chapter{Introduction}
+In the first lab you where able to control the PiCar using the provided
+controller software. In this lab you will see how we can use Python to control
+the PiCar. To do this we will explain how to use an API (Application
+Programming Interface).
 
-    \notebox{
-        \textbf{Note:}
-        API's are used commonly in software engineering and are used to allow programs to communicate with each other. For instance a weather app could use a weather API to request weather data. 
-    }
+\notebox{
+    \textbf{Note:}
+    API's are used commonly in software engineering and are used to allow programs to communicate with each other. For instance a weather app could use a weather API to request weather data.
+}
 
-    Before you start your lab it is a good idea to familiarize yourself with the PiCar's (Python) API; the Javascript API is not needed. You can find the API documentation here: \href{https://github.com/PiCarV/Car-Software/wiki/Pi-Car-V-API-Documentation}{PiCar API Documentation} During the lab we will go over this in more detail.
+Before you start your lab it is a good idea to familiarize yourself with the
+PiCar's (Python) API; the Javascript API is not needed. You can find the API
+documentation here:
+\href{https://github.com/PiCarV/Car-Software/wiki/Pi-Car-V-API-Documentation}{PiCar
+    API Documentation} During the lab we will go over this in more detail. As well it is a good idea to install VSCode and Python 3 on your laptop as this will save time during the lab.
 
-    As well it is a good idea to install VSCode and Python 3 on your laptop as this will save time during the lab.
-
-    \chapter{Start of the Lab}
-    \section{Setup}
-    On your laptop you will need to install VSCode and Python 3. Once installed open VSCode and click File $\Rightarrow$ Open Folder and select a convenient folder. This will be your working directory (Where our project files for this lab will be stored). 
-    Now you can create a new Python file by clicking File $\Rightarrow$ New File and selecting Python. You can call this file straight.py. Now we need to run some commands to install the required packages. Click on Terminal $\Rightarrow$ New Terminal. A Terminal should open at the bottom of the screen. Type the following commands into the Terminal: 
-    \begin{minted}[fontfamily=courier, style=monokai, breaklines, frame=single,framesep=10pt]{shell}
+\chapter{Start of the Lab}
+\section{Setup}
+On your laptop you will need to install VSCode and Python 3. Once installed
+open VSCode and click File $\Rightarrow$ Open Folder and select a convenient
+folder. This will be your working directory (Where our project files for this
+lab will be stored). Now you can create a new Python file by clicking File
+$\Rightarrow$ New File and selecting Python. You can call this file
+straight.py. Now we need to run some commands to install the required packages.
+Click on Terminal $\Rightarrow$ New Terminal. A Terminal should open at the
+bottom of the screen. Type the following commands into the Terminal:
+\begin{minted}[fontfamily=courier, style=monokai, breaklines, frame=single,framesep=10pt]{shell}
     pip install socketio 
     \end{minted}
-    This will install the socketio package. We will use this to connect to the PiCar.
+This will install the socketio package. We will use this to connect to the
+PiCar.
 
-    \section{Code}
-    Now we will write some code to make the PiCar move forwards then backwards. 
-    This code will be written in steps and should guide you through the process of writing code to control the PiCar. The first step is to import the packages.
-    \begin{minted}[linenos, fontfamily=courier, style=monokai, bgcolor=black, breaklines]{python}
+\section{Code}
+Now we will write some code to make the PiCar move forwards then backwards.
+This code will be written in steps and should guide you through the process of
+writing code to control the PiCar. The first step is to import the packages.
+\begin{minted}[linenos, fontfamily=courier, style=monokai, bgcolor=black, breaklines]{python}
     # first we import socketio we use this to connect to the PiCar
     import socketio 
     # next we import time we will use this to delay the code
     import time
-    \end{minted}
+\end{minted}
 
-    Next we will create a socketio object. This is a special variable that contains functions that allow us to communicate with the PiCar.
+Next we will create a socketio object. This is a special variable that contains
+functions that allow us to communicate with the PiCar.
 
-    \begin{minted}[linenos, fontfamily=courier, style=monokai, bgcolor=black, breaklines]{python}
+\begin{minted}[linenos, fontfamily=courier, style=monokai, bgcolor=black, breaklines]{python}
     # create a socketio object
     # socketio is a module that allows us to easily use websockets.
     # Websockets are a protocol that allows two programs to communicate with each other in real time
@@ -69,9 +88,14 @@
     sio = socketio.Client()
     \end{minted}
 
-    Now we will tell socketio to connect to the PiCar. To do this we will need to know the IP address of the PiCar. An IP address is essentially a number that represents the location of a computer on the internet. In our instance we need to know where the Raspberry Pi is located to connect to it. Because all of the PiCar's are running the same software the IP address will always be "192.168.0.10" Let's write some code to do this.
+Now we will tell socketio to connect to the PiCar. To do this we will need to
+know the IP address of the PiCar. An IP address is essentially a number that
+represents the location of a computer on the internet. In our instance we need
+to know where the Raspberry Pi is located to connect to it. Because all of the
+PiCar's are running the same software the IP address will always be
+"192.168.0.10" Let's write some code to do this.
 
-    \begin{minted}[linenos, fontfamily=courier, style=monokai, bgcolor=black, breaklines]{python}
+\begin{minted}[linenos, fontfamily=courier, style=monokai, bgcolor=black, breaklines]{python}
     # connect to the PiCar
     # connects using 192.168.0.10:3000
     # we try to connect if we fail we tell the user 
@@ -83,9 +107,14 @@
         print("Check that your laptop is connected to the PiCar network")
     \end{minted}
 
-    Now you may have noticed that the IP address ends with :3000. This is called a port, we use ports because we may have multiple services that we may want to connect to. For instance when you visit a website that uses port 443, Remote Desktop uses port 3389. In our case our socket server runs on port 3000, later we'll learn about another service running on the PiCar. Now we understand why the above code works we can now make the PiCar move!
+Now you may have noticed that the IP address ends with :3000. This is called a
+port, we use ports because we may have multiple services that we may want to
+connect to. For instance when you visit a website that uses port 443, Remote
+Desktop uses port 3389. In our case our socket server runs on port 3000, later
+we'll learn about another service running on the PiCar. Now we understand why
+the above code works we can now make the PiCar move!
 
-    \begin{minted}[linenos, fontfamily=courier, style=monokai, bgcolor=black, breaklines]{python}
+\begin{minted}[linenos, fontfamily=courier, style=monokai, bgcolor=black, breaklines]{python}
     # now we can start moving the car
     # we set the angle of the steering to 90 degrees
     # this is the middle position (180 being fully right and 0 being fully left)
@@ -108,18 +137,22 @@
     sio.emit('speed', 0)
     \end{minted}
 
-    \section{Testing}
-    Now we will test to see if the code we wrote works. To do this first turn on the PiCar and connect to the WiFi network. Then in visual studio code you can press the run button in the top right corner. It looks like a play arrow. This will run the code we wrote. If all goes well you should see the PiCar move forwards then backwards. Otherwise you will have to debug the code. 
+\section{Testing}
+Now we will test to see if the code we wrote works. To do this first turn on
+the PiCar and connect to the WiFi network. Then in visual studio code you can
+press the run button in the top right corner. It looks like a play arrow. This
+will run the code we wrote. If all goes well you should see the PiCar move
+forwards then backwards. Otherwise you will have to debug the code.
 
-    \pagebreak
-    \section{Your Turn}
+\section{Your Turn}
 
-    Now it's your turn to write some code to control the PiCar. Can you create 2 new python files to first make the PiCar do a U-turn and second to make the PiCar do a three point turn?
+Now it's your turn to write some code to control the PiCar. Can you create 2
+new python files to first make the PiCar do a U-turn and second to make the
+PiCar do a three point turn?
 
-
-
-
-
-   
+\chapter{Finishing Up}
+You have finished the lab. You are free to experiment with more advanced ways
+of controlling the PiCar. For instance try using loops or if statements to run
+more advanced code. This is a great way to get more experience with Python.
 
 \end{document}
