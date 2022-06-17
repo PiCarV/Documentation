@@ -124,7 +124,7 @@ the above code works we can now make the PiCar move!
     # we wait for 5 second this is how long the car will move for
     time.sleep(5)
     # now we stop the car by setting the speed to 0%
-    sio.emit('speed', 0)
+    sio.emit('drive', 0)
     # we stay stopped for 2 seconds
     time.sleep(2)
     # now we reverse by setting the speed to -50%
@@ -134,7 +134,7 @@ the above code works we can now make the PiCar move!
     # now we stop the car by setting the speed to 0%
     # don't forget to stop the car!
     # Otherwise it'll run away!
-    sio.emit('speed', 0)
+    sio.emit('drive', 0)
     \end{minted}
 
 \section{Testing}
