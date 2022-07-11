@@ -115,7 +115,7 @@ Let's practice isolating the green color. To do this we will modify the code we 
 
         # I found that these ranges work well for green
         # However you can change the ranges to find other colors
-        mask = cv.inRange(hsv, (40, 20, 40), (100, 255, 250))
+        mask = cv.inRange(hsv, (40, 50, 90), (100, 255, 220))
 
         # now we display the mask
         cv.imshow("Mask", mask)
