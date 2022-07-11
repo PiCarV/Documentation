@@ -37,17 +37,18 @@
     \chapter{Introduction}
 
     \section{Authors Note}
-    The lab manuals written in a way that not only guides you through the lab, but also provides you with interesting examples of how we can apply the concepts learnt to real world problems that you may encounter in your engineering career. For the best learning experience, it's recommended to read over the lab manuals before starting the lab.
-    As well there may not always be one correct answer to a problem and there may be many different ways to solve a problem. Lot's of parts of the lab require some trial and error so don't be discouraged if you don't succeed at your first attempt.
+    The lab manuals are written in a way that not only guides you through the lab but also provides you with exciting examples of how we can apply the concepts learned to real-world problems that you may encounter in your engineering career. For the best learning experience, reading the lab manuals before starting the lab is recommended.
+    It is important to note that often, there will not be only one correct answer to a problem. There may be many different solutions that satisfy the problems given in this course's lab reports. Many of the labs for this course will require some trial and error; don't be discouraged if you do not succeed on your first attempt.
 
 
     \section{Background}
-    Engineers are often designing complex systems that require a lot of time and effort to build such as self driving cars, and machines that can process and understand data in a comprehensive way.
-    Luckily for us, we have the power of machine learning to help us solve these problems. Currently machine learning has become easily accessible to engineers and researchers so in the following labs we will set out to create our own machine learning models to create a simple self driving car.
-    Although our models will be relatively simple, the techniques you will learn can be applied to every engineering discipline to solve problems that appear very complex.
+    Engineers often design complex systems that require a large amount of time and effort to build. Some examples of this that are relative to the content of this course are speech recognition, medical diagnostics, and self-driving cars.
+    Making a computer complete any of these tasks may seem near-impossible; luckily for us, we have the power of machine learning to help us solve these problems. In recent times, machine learning has become easily accessible to engineers and researchers, so in the following labs we will set out to create our own machine learning models to create a simple, self-driving car.
+    Although our models will be relatively simple, the techniques you will learn can be applied to every engineering discipline to solve complex problems.
+
 
     \section{Introducing the Self Driving Car Project}
-    Over the course of the semester we will be creating a rudimentary self driving car. As it is impractical to use a car to drive around in the real world, we will use a small Remote Controlled Car. This car will have a camera that can see the "road" which we will be made of painters tape. At the end of the semester we will have a competition to see how capable each teams car is.
+    Over the course of this semester, we will be creating a rudimentary self-driving car. As it is impractical, and unsafe, for us to train a typical car to drive around in the real world, we will instead use remote-controlled cars. This car will have a camera that can see the "road" which we will create using painter's tape. At the end of the semester, we will have a competition to see how capable each team's car is.
 
     % page break
     \clearpage
@@ -55,7 +56,7 @@
     \chapter{Start of the Lab}
 
     \section{Introducing the Pi Car}
-    When you come to your first lab you will be given the PiCarV a remote controlled car with a computer built right in! 
+    When you come to your first lab your lab group will be given a remote-controlled car with a computer built right in (PiCarV)! 
 
     % show image
     \begin{figure}[h]
@@ -65,7 +66,7 @@
         \label{fig:The Assembled PiCarV}
     \end{figure}
 
-    The first thing to do is to check if you have received all the components. The PiCarV should already be Assembled and ready to go so make sure you have these components.
+    The first task is to check if you have received all the components. The PiCarV should already be assembled and ready to go. Make sure you have these components:
 
     \begin{itemize}
         \item 18650 Lithium-Ion Battery x2 (They should be wrapped in plastic, do not remove this!)
@@ -73,7 +74,7 @@
         \item 18650 Charger Cable x1
     \end{itemize}
 
-    As well you should look out to make sure nothing is obviously broken and no cables are unplugged.
+    In addition to verifying that you have all received all of the above components, you should look to make sure that nothing is obviously broken and that no cables are unplugged on your PiCarV.
 
 \begin {figure}[h]
     \centering
@@ -84,7 +85,7 @@
     
 \notebox{
     \textbf{18650 Facts:}
-    The 18650 Battery Cell is one of the most common battery cells in the world. They are used in almost every electric car and bike. They can be connected together in series and parallel to create any battery pack an engineer may need. From a small 2 cell battery pack like in our PiCarV to a full size electric car with over 8000 cells.
+    The 18650 Battery Cell is one of the most common battery cells in the world. They are used in almost every electric car and bike. They can be connected together in series and parallel to create any battery pack an engineer may need. From a small 2-cell battery pack, like in our PiCarV, to a full-size electric car with over 8000 cells.
 }
 
 \section{Testing the PiCarV}
@@ -92,10 +93,10 @@ To test the PiCarV you will first need to charge the batteries by placing them i
 
 \cautionbox{
     \textbf{Warning Fire Hazzard:}
-    While 18650 batteries are generally very safe, under the wrong circumstances they can cause a fire hazard. To alleviate this you should always be present when charging the batteries and make sure you store the batteries away from flammable materials. As well the cells should be kept away from the heat source. For instance do not leave the batteries in a hot car.
+    While 18650 batteries are generally very safe, under the wrong circumstances they can be a fire hazard. To alleviate this you should always be present when charging the batteries and make sure you store the batteries away from flammable materials. Store the batteries in room temperature/cool conditions; for instance, do not leave the batteries in a hot car.
 }
 
-Once the charger has finished the batteries can be placed into the PiCarV. Next switch on the PiCarV. You should see the lights on the side of the PiCarV start to blink. You can check if everything is working by opening your WiFi settings on your phone or laptop and checking if a hotspot has been created. It should be called PiCarV followed by a string of letters and numbers. Write this down as it can be hard to know what hotspot to connect to when lots of PiCars are running at the same time.
+Once the charger has finished, the batteries can be placed into the PiCarV. Once the batteries are installed, switch on the PiCarV. You should see the lights on the side of the PiCarV start to blink. You can verify that everything is working by opening your Wi-Fi settings on your phone or laptop and checking if a hotspot has been created. The hotspot network should be called PiCarV followed by a string of letters and numbers. Make a note of the name of this network because, when multiple PiCars are running simultaneously, it may be difficult to determine which network belongs to which PiCar.
 
 \section{Connecting the controller to the PiCarV}
 We provide a simple controller app that you can use to check that your PiCarV is working. You can download the app from the following link. 
@@ -103,7 +104,7 @@ We provide a simple controller app that you can use to check that your PiCarV is
 \href{https://github.com/PiCarV/Controller/releases}{PiCar Controller} Make sure you get the correct version for your operating system. EXE for windows and DMG for mac.
 
 
-Once you have installed the controller you can connect your computer to the PiCar hotspot the password is "raspberry". Next you can open the controller app and enter in the IP address of the PiCarV in the top right corner. The IP address is "192.168.0.10". Once this is entered the text that says "connected: false" should change to "connected: true" and you should see a live stream from the camera. Try to have a go controlling the PiCarV with the wasd or arrow keys. 
+Once you have installed the controller you can connect your computer to the PiCar hotspot the password is "raspberry". Next, you can open the controller app and enter the IP address of the PiCarV in the top right corner. The IP address is "192.168.0.10". Once this is entered the text that says "connected: false" should change to "connected: true" and you should see a live stream from the camera. Try to have a go controlling the PiCarV with either WASD or the arrow keys. 
 
 % show image
 \begin{figure}[h]
