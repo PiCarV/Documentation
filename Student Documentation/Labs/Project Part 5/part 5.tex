@@ -1,0 +1,36 @@
+\documentclass[11pt]{report}
+\usepackage{fullpage}
+%\usepackage{sourcesanspro, sourcecodepro}
+\usepackage{minted}
+\usepackage{graphicx}
+\usepackage{awesomebox}
+\usepackage{hyperref}
+\usepackage{float} % stops images from moving around
+\usepackage[a4paper, total={6in, 8in}, margin=0.75in]{geometry}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[default,light,black]{roboto}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    pdfborder={0 0 0}
+}
+
+\graphicspath{{./images/}}
+
+\title{APSC 258: Lab 5 Manual}
+\author{Andre Cox}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\clearpage
+
+\end{document}
