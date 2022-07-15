@@ -1,4 +1,4 @@
-\documentclass[11pt]{report}
+\documentclass[12pt]{report} % Increased font size for DM
 \usepackage{fullpage}
 %\usepackage{sourcesanspro, sourcecodepro}
 \usepackage{minted}
@@ -13,13 +13,17 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage[default,light,black]{roboto}
 
+% DarkMode
+\usepackage{xcolor}
+\pagecolor[rgb]{0,0,0} %black
+\color[rgb]{0.7,0.7,0.7} %grey
 
 \hypersetup{
     colorlinks=true,
-    linkcolor=blue,
-    citecolor=blue,
-    filecolor=blue,
-    urlcolor=blue,
+    linkcolor=cyan,
+    citecolor=cyan,
+    filecolor=cyan,
+    urlcolor=cyan,
     pdfborder={0 0 0}
 }
 
@@ -61,7 +65,7 @@
     % show image
     \begin{figure}[h]
         \centering
-        \includegraphics[width=0.8\textwidth]{picarv.jpg}
+        \includegraphics[width=0.8\textwidth]{picarv.png}
         \caption{The Assembled PiCarV}
         \label{fig:The Assembled PiCarV}
     \end{figure}
@@ -78,7 +82,7 @@
 
 \begin {figure}[h]
     \centering
-    \includegraphics[width=0.5\textwidth]{battery.jpg}
+    \includegraphics[width=0.5\textwidth]{battery.png}
     \caption{18650 Battery}
     \label{fig: 18650 Battery}
 \end{figure}
