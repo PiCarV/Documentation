@@ -35,6 +35,50 @@
 
 \chapter{Introduction}
 In this lab we will be creating a simple neural network to predict the steering angle of the car.
-By the end of this lab you should have a network that can drive the car and follow the lane lines. Some parts about making the neural network are out of the scope of this course so we will provide you with a starting point for your work.
+By the end of this lab you should have a network that can drive the car and follow the lane lines. Some parts about making the neural network are out of the scope of this course so we will provide you with a starting point for your work. You can download the code for this lab from the  
+\href{https://github.com/PiCarV/Demos}{Github Repository}.
+
+\section{Gradient}
+We can train our neural network using our computer. However this will probably be slow depending on how powerful your computer is. To solve this we will use a service called \href{https://www.gradient.run/}{Gradient}. This service provides a cloud based platform for training neural networks and it is free for basic use. You can create a free account at the link above and you will be able to train your own neural network.
+
+\section{Data}
+We will be using 2 datasets. The first is a training dataset that we will use to train our neural network. The second is a test dataset that we will use to test our neural network. You can download the datasets from the link below. These files are compressed using 7zip. Our provided code will extract the files for you. We will show you how to do this in the next section.
+
+%bold text
+\textbf{REMEMBER TO PUT THE URL HERE}
+
+\pagebreak
+
+\chapter{Start of the Lab}
+First we will download the demo code from the \href{https://github.com/PiCarV/Demos/archive/refs/heads/main.zip}{Github Repository}. And then extract the files to a folder. Next go to the folder called.
+\begin{minted}[breaklines=true, fontsize=\small]{bash} 
+Lab Code/Lab Part 4/
+\end{minted}
+
+Here you will find a file called model.ipynb. This is the file that we will use to train our neural network. To run this file we will upload it to Gradient and then run it.
+To do this go to the Gradient website and sign up. Then click "CREATE A PROJECT". You will be asked to choose a name for your project. Pick whatever you want. Then click "CREATE". Now press the "CREATE" button in the middle of the page. When it asks you to select a runtime choose "TensorFlow". Next you can change the auto shutdown to 6 hours which should be more than enough time to train your neural network. Then click "START NOTEBOOK". Once the notebook has started you can go to the left hand side of the page and click the files icon. Then click the upload files icon. Now select the file model.ipynb and click upload. You can then open the uploaded file.
+
+\section{Data Upload}
+Now we will upload the training and test datasets to Gradient. Simply upload the data.7z file to the project the same way you uploaded the model.ipynb file.
+
+\chapter{Running the Code}
+Now that Gradient is set up and your data is uploaded you can run the code. Simply open the model.ipynb file and then run each code block.
+
+\section{Building your network}
+Once you get to Part 4 of the code you are ready to build your neural network. You can modify the code provided to try to get a better training result by lowering the mean squared error. To do this you can try adding more layers, changing the activation functions, or changing the number of neurons in the hidden layers.
+
+\section{Saving the network}
+After you have trained your neural network you can save it to a file. To do this go to the final code block and run it. However before you do this we recommend changing the name of the file to something more meaningful. After this block runs you can refresh the file browser in the right hand side of the screen and you will see a file called model.h5 or whatever you decided to name it. This is the file that the Pi Car V will use to self drive. You can download the file by right clicking on it and selecting Download. 
+
+\chapter{Running the Pi Car V}
+Now that you have trained your neural network you can run the Pi Car V. To do this you can open the Demos folder you downloaded in the first part of this lab and go to the folder "Lab Code/Lab Part 4/". In this folder you will find a file called runNetwork.py. This file will run the Pi Car V. All you need to do is connect to the Pi Car V's wifi network.
+Then put the model.h5 file in the same folder as the runNetwork.py file. Then run the file by typing "python runNetwork.py". If your file is named something else you can add some command line arguments to the file. For example "python runNetwork.py --model differentModel.h5". For a full list of command line arguments you can type "python runNetwork.py --help".
+
+\section{Control the Pi Car V}
+Once the runNetwork file is running a window will open. You can use this window to adjust the speed of the car and the color to mask.
+
+\section{Finishing Up}
+To complete this lab you will need to experiment to get your car to follow the lane lines. You may find that this is a bit tricky. Next lab we will introduce a new layer that will help you with this.
+
 
 \end{document}
