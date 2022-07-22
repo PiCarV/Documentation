@@ -1,0 +1,38 @@
+\documentclass[11pt]{report}
+\usepackage{fullpage}
+%\usepackage{sourcesanspro, sourcecodepro}
+\usepackage{minted}
+\usepackage{graphicx}
+\usepackage{awesomebox}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}, margin=0.75in]{geometry}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[default,light,black]{roboto}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    pdfborder={0 0 0}
+}
+
+\graphicspath{{./images/}}
+
+\title{APSC 258: Lab 6 Manual}
+\author{Andre Cox \\ Scott Halston}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+% page break
+\clearpage
+
+\chapter{}
+
+\end{document}
