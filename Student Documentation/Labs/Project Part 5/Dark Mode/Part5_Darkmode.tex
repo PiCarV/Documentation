@@ -13,12 +13,17 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage[default,light,black]{roboto}
 
+% Darkmode
+\usepackage{xcolor}
+\pagecolor[rgb]{0,0,0} %black
+\color[rgb]{0.5,0.5,0.5} %grey
+
 \hypersetup{
     colorlinks=true,
-    linkcolor=blue,
-    citecolor=blue,
-    filecolor=blue,
-    urlcolor=blue,
+    linkcolor=cyan,
+    citecolor=cyan,
+    filecolor=cyan,
+    urlcolor=cyan,
     pdfborder={0 0 0}
 }
 
@@ -35,7 +40,7 @@
 
 \chapter{Introduction}
 \section{Introducing the Convolution Layer}
-In our last lab, you got to work with dense layers. You may have noticed that the neural network was not very effective. In this lab, we will introduce the concept of Convolution layers. To explain why we use these layers we must first revisit the idea of a dense layer. You can think of a dense layer as a layer of neurons. The neurons in a dense layer are simply a weighted sum of the inputs. When training the neural network these weights get adjusted until the network is able to predict the correct output. This is a great way to predict simple things such as the average grade a student may achieve based on class attendance and the amount of homework they have done. However, they become less effective as the number and complexity of the inputs increase. For instance, let's say we have an image of our track that we feed into some dense layers. These dense layers may be able to predict the steering angle of the car however they may get confused depending on the different features of the image. This is because these layers represent the image in 1 dimension. Let me give you an example. 
+In our last lab, you got to work with dense layers. You may have noticed that the neural network was not very effective. In this lab, we will introduce the concept of Convolution layers. To explain why we use these layers we must first revisit the idea of a dense layer. You can think of a dense layer as a layer of neurons. The neurons in a dense layer are simply a weighted sum of the inputs. When training the neural network these weights get adjusted until the network is able to predict the correct output. This is a great way to predict simple things such as the average grade a student may achieve based on class attendance and the amount of homework they have done. However, they become less effective as the number and complexity of the inputs increase. For instance, let's say we have an image of our track that we feed into some dense layers. These dense layers may be able to predict the steering angle of the car however they may get confused depending on the different features of the image. This is because these layers represent the image in 2 dimensions. Let me give you an example. 
 
 \begin{figure}[h]
 \centering

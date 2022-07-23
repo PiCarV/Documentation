@@ -1,4 +1,4 @@
-\documentclass[11pt]{report}
+\documentclass[12pt]{report}
 \usepackage{fullpage}
 %\usepackage{sourcesanspro, sourcecodepro}
 \usepackage{minted}
@@ -13,12 +13,17 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage[default,light,black]{roboto}
 
+% Darkmode
+\usepackage{xcolor}
+\pagecolor[rgb]{0,0,0} %black
+\color[rgb]{0.5,0.5,0.5} %grey
+
 \hypersetup{
     colorlinks=true,
-    linkcolor=blue,
-    citecolor=blue,
-    filecolor=blue,
-    urlcolor=blue,
+    linkcolor=cyan,
+    citecolor=cyan,
+    filecolor=cyan,
+    urlcolor=cyan,
     pdfborder={0 0 0}
 }
 
@@ -51,38 +56,6 @@ We will be using 2 datasets. The first is a training dataset that we will use to
 \textbf{REMEMBER TO PUT THE URL HERE}
 
 \pagebreak
-
-\chapter{Dense Layers Deep Dive}
-\section{How dense layers work in practice}
-Dense layers are a array of weights that are placed side by side. Multiple layers of dense layers can be connected together by connecting each weight in the previous layer to the weight in the next layer. This may look something like this:
-% insert figure
-
-    \begin{figure}[h]
-        \begin{center}
-        \includegraphics[width=0.5\textwidth]{denselayers.jpeg}
-        \caption{Dense layers visualization}
-        \label{fig:dense_layers}
-        \end{center}
-    \end{figure}
-
-The weights in each neuron in the dense layer are activated by the inputs. The activation of the neuron is the weighted sum of the inputs. The activation of the neuron is then passed through a non-linear activation function to get the output. The output of the neuron is then connected to the next layer. There are many different activation functions that can be used. A couple of common ones are displayed below.
-
-\begin{figure}
-    \begin{center}
-    \includegraphics[width=1\textwidth]{activation functions.png}
-    \caption{Common activation functions}
-    \label{fig:activation_functions}
-    \end{center}
-\end{figure}
-
-\section{Using Dense Layers in Keras}
-Keras is the Python library that we will use to create our neural network. Keras is a high level library that allows us to create neural networks in a simple and easy way. Later you will see that we provide a pre made template for you to use. However you still need to understand how to create a neural network in Keras.
-
-\pagebreak
-
-
-
-
 
 \chapter{Start of the Lab}
 First, we will download the demo code from the \href{https://github.com/PiCarV/Demos/archive/refs/heads/main.zip}{Github Repository}.
