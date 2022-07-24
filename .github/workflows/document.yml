@@ -6,6 +6,7 @@ on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     branches: ["release"]
+
   pull_request:
     branches: ["release"]
 
@@ -15,10 +16,11 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  setup:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
+    outputs:
+      documents: ${{ steps.pl.outputs.files }}
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -30,6 +32,9 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: Install pygmentize
+        run: pip3 install Pygments
+
       - name: Find the latex files
         id: pl
         run: python3 ./BuildTools/findfiles.py
@@ -38,9 +43,27 @@ jobs:
         run: |
           echo "Found ${{ steps.pl.outputs.file_count }} documentation files."
 
-      - uses: xu-cheng/latex-action@v2
+      - name: Install latex
+        run: |
+          apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys D6BC243565B2087BC3F897C9277A7293F59E4889
+          echo "deb http://miktex.org/download/ubuntu focal universe" | sudo tee /etc/apt/sources.list.d/miktex.list
+          apt-get update
+          apt-get install -y miktex
+          miktexsetup finish
+          initexmf --set-config-value [MPM]AutoInstall=1
+
+      - name: Build the documentation
+        run: python3 ./BuildTools/builddocs.py
+
+      - name: Display the size of the documentation
+        run: ls -lh output.zip
+
+      - name: Release Documentation
+      - uses: "marvinpinto/action-automatic-releases@latest"
         with:
-          root_file: |
-            ${{steps.pl.outputs.files}}
-          latexmk_shell_escape: true
-          latexmk_use_xelatex: true
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "APSC 258 Documentation"
+          files: |
+            output.zip
