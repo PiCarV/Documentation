@@ -40,6 +40,7 @@ jobs:
 
       - uses: xu-cheng/latex-action@v2
         with:
-          root_file: ${{steps.pl.outputs.files}}
+          root_file: |
+            ${{steps.pl.outputs.files}}
           latexmk_shell_escape: true
           latexmk_use_xelatex: true
