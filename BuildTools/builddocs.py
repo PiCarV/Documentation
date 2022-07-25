@@ -19,7 +19,7 @@ print("Starting to build docs!")
 
 # loop through the file array, move into the directory, and run pdflatex on the file
 for file in file_array:
-    os.system(f'cd \"{os.path.dirname(file)}\" && pdflatex -shell-escape -halt-on-error \"{os.path.basename(file)}\"')
+    os.system(f'cd \"{os.path.dirname(file)}\" && sudo pdflatex -shell-escape -halt-on-error \"{os.path.basename(file)}\"')
 
 pdf_array = []
 pdf_count = 0

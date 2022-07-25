@@ -5,6 +5,7 @@
 \usepackage{graphicx}
 \usepackage{awesomebox}
 \usepackage{hyperref}
+\usepackage{float} % stops images from moving around
 \usepackage[a4paper, total={6in, 8in}, margin=0.75in]{geometry}
 \usepackage{etoolbox}
 \makeatletter
@@ -24,82 +25,64 @@
 \graphicspath{{./images/}}
 
 \title{APSC 258: Lab 6 Manual}
-\author{Scott Halston}
+\author{Andre Cox}
 
 \begin{document}
 \maketitle
 \tableofcontents
 
-% page break
 \clearpage
 
 \chapter{Introduction}
-\section{Introducing Droppout Layers}
-In our last lab, you improved your self-driving neural network by introducing convolution layers. Hopefully, in adding convolution layers, you were able to achieve a low training and testing mean squared error (MSE) value. Getting a low training MSE was probably much easier than achieving a low training MSE value. This is because your model became overfit to the training data. To combat this, we will introduce dropout layers in this lab manual.
+\section{Introducing the Dropout Layer}
+In our last lab you may have noticed that the loss for the training data was very low while the testing loss was quite high. This is because of a phenomenon called overfitting. Overfitting is when the model has learned the detail and noise of the training data but has not learned the general shape of the data. To combat this we will use dropout layers. 
 
-\section{Overfitting}
-Overfitting occurs when a model is trained in a way that produces a model that fits exactly against its training data. When a model is overfitted, the model cannot predict unseen data accurately. Understanding this concept through words is difficult, so below are some graphs to help.
+\section{The Problem}
+You can imagine a neural network as data flowing through a series of functions that are connected to each other. The functions are called neurons and are grouped together to form layers. Multiple layers are connected to each other to form a neural network. When we train the network we adjust these functions to make the network better at predicting the correct output. You can think of this as creating pathways in the network that get activated when a correct input is given. As we continue to train the network these pathways get more entrenched and the network becomes more accurate at predicting the correct output. However you could imagine that if the input into the network is slightly different than the model expects the pathway may not be activated. Now lets think about how we can solve this problem. We could use a huge amount of data fed into the network to create lots of pathways so that our network can predict a wide range of inputs. You can probably imagine that this is may have some downsides. For instance we would need to collect a lot more data, and the network would be more complex. 
 
-\begin{center}
-    \includegraphics[scale=0.375]{./images/overfitexample.png}
-\end{center}
+\section{Fixing the Problem}
+A better way to solve this problem is to use dropout layers. These may seem difficult to understand but they are actually very simple. All a dropout layer does is randomly set some of the weights to zero; usually based on a percentage. Why does this work? As mentioned before when we overfit pathways in the network get ingrained to predict specific inputs. If we randomly set some of the weights to zero we are effectively removing some of the pathways in the network. This means that the network will have to adjust itself to more generalize to the shape of the input rather than specific features of the input.
 
-\section{Dropout Layers}
-We introduce dropout layers to combat overfitting our models. A dropout layer is a very simple function that randomly drops training data to disrupt the model from becoming overfitted. An example of this can be seen below.
+\clearpage
 
-\begin{center}
-    \includegraphics[scale=0.2]{./images/dropoutexample.png}
-\end{center}
+\chapter{Implementation}
+I'll briefly explain how to implement dropout layers in Keras. See the code sample below.
 
-\chapter{Using Dropout Layers}
-Now that we have a better understanding of dropout layers, we can use them in our neural network.
+\begin{minted}[linenos, fontfamily=courier, style=monokai, bgcolor=black, breaklines]{python}
+    # First we'll import the layers we'll be using
+    from keras.layers import Dense, Dropout # here's the dropout layer
+    from keras.models import Sequential # here's the model we'll be using
 
-
-\section{Dropout Layers in Neural Networks}
-Below is the same example of a neural network that you saw in the last lab manual; except, this time, it includes dropout layers. For your understanding, all of the parameters are explained within the code. It is highly recommended to go through this code on your own to better your understanding of dropout layers.
-
-\begin{minted}[linenos, fontfamily=courier, style=monokai, bgcolor=black, breaklines]{python} 
-    from keras.layers import Conv2D, MaxPooling2D, Dense Sequential, InputLayer, Flatten
-    # a sequential model is a model that is made up of layers
+    # Create the model
     model = Sequential()
-    # the input layer is the first layer in the model
-    model.add(InputLayer(input_shape=(100, 66, 1)))
 
-    # the convolution layer
-    # the different parameters are:
-    # the number of output filters: 32
-    # the kernel size: (3, 3) specifying the height and width of the 2D convolution window.
-    # the activation function: ReLU the type of activation function that is used in the convolution layer.
-    model.add(Conv2D(32, kernel_size=(3, 3), activation='relu'))
-
-    # the pooling layer
-    # the pooling layer is used to reduce the size of the image.
-    # the pool size: (2, 2) specifying the height and width of the 2D pooling window.
-    model.add(MaxPooling2D(pool_size=(2, 2)))
-
-    # the dropout layer
-    # the dropout layer is used to prevent overfitting the model.
-    # increasing or decreasing the value will determine how often the dropout layer randomly drops the training data
-    model.add(Dropout(0.1))
-
-    # the flatten layer
-    # the flatten layer is used to turn the output of the convolution layer into a 1 dimensional vector.
-    model.add(Flatten())
-
-    # our dense layers, used to do the classification
-    model.add(Dense(100, activation='relu'))
-    model.add(Dense(50, activation='relu'))
-    model.add(Dense(10, activation='relu'))
-    model.add(Dense(1, activation='relu'))
+    # now lets add some layers to the model
+    model.add(Dense(units=1, activation='relu')) # first layer
+    model.add(Dense(units=25, activation='relu')) # second layer
+    model.add(Dropout(0.2)) # dropout layer with 20% of the units being set to zero
+    model.add(Dense(units=25, activation='relu')) # third layer
+    model.add(Dense(units=1, activation='sigmoid')) # output layer
 \end{minted}
+We can see in the above code sample that our model has four dense layers. In the center of the model we have a dropout layer. This layer randomly sets 20 percent of the weights to zero. This is done to prevent the model from overfitting. 
 
+\notebox{\textbf{Note:} We define percentages as floats between 0 and 1. So 0.2 would be 20 percent. In the dropout layer you can experiment with different percentages to see how the model performs.}
 
-\chapter{Applying the Convolution Layer}
-Now that you have a good grasp of dropout layers, we can apply it to our own neural network. Open the model that you've been working on over the past 2 labs and add try experimenting by adding dropout layer(s). See if multiple dropout layers function better than a single one and test what values of the dropout layer(s) provide the best results. Once you are happy with your model, you can save the model and download it. You can run the model with the following code.
-"python runNetwork.py -m yourConvolutionModel.h5"
+\chapter{Your Turn}
+In your last lab you should  have implemented Convolutional layers into your model. In this lab you will implement dropout layers into your model. Your goal in this lab is to try to decrease the loss of the validation data. You can go about this in the following steps:
+\pagebreak
+\begin{enumerate}
+    \item{Take your model from the previous lab.}
+    \item{Record your current loss on the training and validation data.}
+    \item{Add a dropout layer to your model.}
+    \item{Add a random dropout percentage. Somewhere between 0 and 1.}
+    \item{Retrain your model.}
+    \item{Record your current loss on the training and validation data.}
+    \item{Repeat the process until you can't get the loss to decrease any more.}
+\end{enumerate}
 
-\section{Finishing Up}
-To complete this lab, you should experiment with dropout layers to achieve both, a low testing and training MSE value.
-You now have all of the tools of neural networks available to you to make your model the best it can be! Your next lab manual will detail how your models will be graded and what you should be trying to achieve. For this lab session, try to get the lowest MSE values you can.
+\tipbox{\textbf{Hint:} A good starting point for picking a random dropout percentage is 0.2 - 0.5. Most convolutional neural networks put the dropout layers in the Dense layers.}
+
+\chapter{Finishing Up}
+Once you have implemented dropout layers in your model and are happy with the results you can save your model. Once this is done have a go downloading it and running it on the PiCarV. If you need a reminder on how to do this please refer to lab 4.
 
 \end{document}

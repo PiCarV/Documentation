@@ -22,16 +22,16 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set up Python 3.x
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.x"
+        run: |
+          sudo apt-get update && sudo apt-get install -y python3.7
+          sudo apt-get install -y python3-pip
 
       - name: Install pygmentize
-        run: pip3 install Pygments
+        run: sudo pip3 install Pygments
 
       - name: Find the latex files
         id: pl
-        run: python3 ./BuildTools/findfiles.py
+        run: sudo python3 ./BuildTools/findfiles.py
 
       - name: Output results
         run: |
@@ -47,7 +47,7 @@ jobs:
           sudo initexmf --admin --set-config-value [MPM]AutoInstall=1
 
       - name: Build the documentation
-        run: python3 ./BuildTools/builddocs.py
+        run: sudo python3 ./BuildTools/builddocs.py
 
       - name: Display the size of the documentation
         run: ls -lh output.zip
