@@ -3,7 +3,7 @@ name: Build Documentation
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
-  pull_request:
+  push:
     branches: ["release"]
 
   # Allows you to run this workflow manually from the Actions tab
@@ -39,7 +39,7 @@ jobs:
 
       - name: Install latex
         run: |
-          winget install -e --id ChristianSchenk.MiKTeX
+          choco install miktex
 
       - name: Build the documentation
         run: python3 ./BuildTools/builddocs.py
