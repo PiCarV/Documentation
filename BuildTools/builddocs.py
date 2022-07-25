@@ -21,6 +21,11 @@ print("Starting to build docs!")
 for file in file_array:
     os.system(f'cd \"{os.path.dirname(file)}\" && sudo pdflatex -shell-escape -halt-on-error \"{os.path.basename(file)}\"')
 
+# we have to run this again otherwise the table of contents will not be generated
+for file in file_array:
+    os.system(f'cd \"{os.path.dirname(file)}\" && sudo pdflatex -shell-escape -halt-on-error \"{os.path.basename(file)}\"')
+
+
 pdf_array = []
 pdf_count = 0
 
