@@ -66,22 +66,20 @@ Dense layers are a array of weights that are placed side by side. Multiple layer
     \end{figure}
 
 The weights in each neuron in the dense layer are activated by the inputs. The activation of the neuron is the weighted sum of the inputs. The activation of the neuron is then passed through a non-linear activation function to get the output. The output of the neuron is then connected to the next layer. There are many different activation functions that can be used. A couple of common ones are displayed below.
-
+\\ \\ \\ \\
+\includegraphics[width=1\textwidth]{activation functions 1.jpg}
 \begin{figure}
     \begin{center}
-    \includegraphics[width=1\textwidth]{activation functions.png}
+    \includegraphics[width=1\textwidth]{activation functions 2.jpg}
     \caption{Common activation functions}
     \label{fig:activation_functions}
     \end{center}
 \end{figure}
 
+\pagebreak 
+
 \section{Using Dense Layers in Keras}
 Keras is the Python library that we will use to create our neural network. Keras is a high level library that allows us to create neural networks in a simple and easy way. Later you will see that we provide a pre made template for you to use. However you still need to understand how to create a neural network in Keras.
-
-\pagebreak
-
-
-
 
 
 \chapter{Start of the Lab}
@@ -145,10 +143,10 @@ Now that Gradient is set up and your data is uploaded you can run the code. Simp
 \section{Building your network}
 Once you get to Part 4 of the code, you are ready to build your neural network. You can modify the code provided to try to get a better training result. Your goal should be to have a small mean squared error (MSE) value and consistent validation accuracy. To do this you can try adding more layers, changing the activation functions, or changing the number of neurons in the hidden layers.
 
-\pagebreak
-
 \section{Saving the network}
 After you have trained your neural network, you can save it to a file. To do this, simply run the final code block. Before you do this, we recommend changing the name of the file to something more meaningful. After this block runs you can refresh the file browser on the left-hand side of the screen and you will see a file called model.h5 or whatever you decided to name it. This is the file that the Pi Car V will use to self-drive. You can download the file by right-clicking on it and selecting Download. 
+
+\pagebreak
 
 \chapter{Running the Pi Car V}
 Now that you have trained your neural network you can run the Pi Car V. To do this you can open the Demos folder you downloaded in the first part of this lab and go to the folder "Lab Code/Lab Part 4/". In this folder, you will find a file called runNetwork.py. This file will run the Pi Car V. All you need to do is connect to the Pi Car V's wifi network and then put the model.h5 file in the same folder as the runNetwork.py file. Run the file by typing "python runNetwork.py". If your file is named something else you can add some command line arguments to the file. For example "python runNetwork.py --model differentModel.h5". For a full list of command line arguments, you can type "python runNetwork.py --help".
