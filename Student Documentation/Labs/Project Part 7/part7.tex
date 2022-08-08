@@ -35,7 +35,7 @@
 
 \chapter{Introduction}
 \section{Introduction}
-In our last lab, you were shown how to use droppout layers in your neural network. In combining droppout layers along with your previous knowlage of convolution layers and dense layers, hopefully you have been successfull in creating a neural network that can accuratly and quickly follow lanes.
+In our last lab, you were shown how to use dropout layers in your neural network. In combining dropout layers along with your previous knowledge of convolution layers and dense layers, hopefully you have been successful in creating a neural network that can accurately and quickly follow lanes.
 \\ \\
 In this lab, we will only be discussing the measures and parameters that will be used to grade your model. The intention for this lab is that it will give you a clear outline of what is expected from your neural network.
 
@@ -45,9 +45,16 @@ The "Big Three" things that your models will be graded on are as follows:
 Your models will be run through a script which will record your MSE values and the size of your model.
 
 \section{Accuracy}
-Accuracy will be determined through 
+Accuracy will be determined through the Mean Squared Error (MSE) of your model. The lower the MSE, the better your model. The MSE is calculated by taking the difference between the actual and predicted values and squaring it. To prevent you from simply overfitting your model to get the best MSE, your model will be run through a validation set. This set will never be seen before so overfitting is not a method of getting the best MSE.
 
+\section{Speed}
+Speed will be determined by the time it takes to run your model. The faster your model runs, the better your model. We will determine this by running your car through a track and measuring the time it takes. The better your model runs, the faster your car will be able to complete the track.
 
+\section{Size}
+Size is simple to determine, the size of your model will simply be the space it takes up on your computer. The smaller the model, the better your model. An un-optimized model will take up to 2GB of space on your computer. On the other hand you can optimize your model to smaller than 5MB of space. It is up to you to determine whether you want to go for a larger model that is more Accurate or a smaller model that is faster and takes up less space.
+
+\chapter{Tips for Optimization}
+To help you out we will provide the software that we will use to grade your model.
 
 
 \end{document}

@@ -53,12 +53,14 @@ Before you start your lab it is a good idea to familiarize yourself with PiCar's
 
 \chapter{Start of the Lab}
 \section{Setup}
-On your laptop, you will need to install VSCode and Python 3. Once installed open VSCode and click File $\Rightarrow$ Open Folder and select or create a folder in a convenient location on your laptop. This will be your working directory (Where our project files for this lab will be stored). Next, you can create a fresh Python file by clicking File $\Rightarrow$ New File and selecting Python. You can call this file straight.py. After this, we need to run some commands to install the required packages. Click on Terminal $\Rightarrow$ New Terminal. A Terminal should open at the bottom of your screen. Type the following commands into the Terminal:
-\begin{minted}[fontfamily=courier, style=monokai, breaklines, frame=single,framesep=10pt]{shell}
-    pip install socketio 
-    \end{minted}
-This will install the socketio package. We will use this package to connect to the PiCar.
-
+On your laptop, you will need to install VSCode and Python 3. Once installed open VSCode and click File $\Rightarrow$ Open Folder and select or create a folder in a convenient location on your laptop. This will be your working directory (Where our project files for this lab will be stored). Next, you can create a fresh Python file by clicking File $\Rightarrow$ New File and selecting Python. You can call this file straight.py. After this, we need to run some commands to install the required packages. Click on Terminal $\Rightarrow$ New Terminal. A Terminal should open at the bottom of your screen. Then you can go to our github repository \href{https://github/PiCarV/Demos}{here} and download and unzip the repository. In the top level you will find a file called "requirements.txt" This contains all the dependencies you will need for the course. You can copy it into your VSCode workspace and run the following command:
+\begin{minted}[]{bash}
+pip install -r requirements.txt
+\end{minted}
+or 
+\begin{minted}[]{bash}
+pip3 install -r requirements.txt
+\end{minted}
 \section{Code}
 In this section, we will write some code to make the PiCar move forwards then backwards. This code will be written in steps and should guide you through the process of writing code to control the PiCar. The first step is to import the packages.
 \begin{minted}[linenos, fontfamily=courier, style=monokai, bgcolor=black, breaklines]{python}
