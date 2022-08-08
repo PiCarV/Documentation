@@ -1,0 +1,161 @@
+\documentclass[11pt]{report}
+\usepackage{fullpage}
+%\usepackage{sourcesanspro, sourcecodepro}
+\usepackage{minted}
+\usepackage{graphicx}
+\usepackage{awesomebox}
+\usepackage{hyperref}
+\usepackage[a4paper, total={6in, 8in}, margin=0.75in]{geometry}
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[default,light,black]{roboto}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    pdfborder={0 0 0}
+}
+
+\graphicspath{{./images/}}
+
+\title{APSC 258: Terminal Help}
+\author{Andre Cox}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\pagebreak
+\chapter{Introduction}
+Welcome to the terminal help documentation for the APSC 258 Project. This document will give you a quick overview of how to use the terminal to run commands for the project.
+
+\section{What is the terminal?}
+The terminal is a command line interface that allows you to run commands that you type in. The terminal is a program that is installed on your computer. Different operating systems have different terminals however they all work in similar ways and the commands are almost identical. We use the terminal as it is an easy way to run commands with custom parameters.
+
+\chapter{Finding the terminal}
+\section{Windows}
+Windows has a built in terminal that is called cmd.exe.
+You can open it by typing cmd.exe in the Windows search bar.
+\section{Mac}
+Click the Launchpad icon in the Dock, type Terminal in the search field, then click Terminal.
+\section{Linux}
+All Linux distos are slightly different but you can generally search for the terminal like any other program.
+
+\chapter{Basic Commands}
+Once you have opened your terminal, you can run commands by typing them in. I'll show you the top most common commands.
+
+\section{Listing Files}
+To list all the files in a directory, type the following command:
+\begin{minted}[]{bash}
+ls
+\end{minted}
+\section{Changing Directories}
+To change directories, type the following command:
+\begin{minted}[]{bash}
+cd <directory>
+\end{minted}
+Please note that if your directory has spaces in it, you need to use quotes around the directory name. For example:
+\begin{minted}[]{bash}
+cd C:\Users\Andre\Desktop\APSC258
+cd "C:\Users\Andre\Desktop\APSC 258"
+\end{minted}    
+In the above example, only the directory with the spaces in it needs to be quoted.
+Something else to note is that the directories above are known as absolute paths. Absolute paths are paths that start with the root of the drive. Another kind of path is a relative path. Relative paths are paths that start with the current directory. For example if we are in the directory 
+\begin{minted}[]{bash}
+C:\Users\Andre\Desktop\APSC 258
+\end{minted}
+and we want to go to the directory
+\begin{minted}[]{bash}
+C:\Users\Andre\Desktop\APSC 258\Projects\APSC 258\Part 1    
+\end{minted}
+we can type the following command:
+\begin{minted}[]{bash}
+cd "Part 1"
+\end{minted}
+If we want to go to the directory above, we can type the following command:
+\begin{minted}[]{bash}
+cd ..
+\end{minted}
+\section{Creating Directories}
+To create a new directory, type the following command:
+\begin{minted}[]{bash}
+mkdir <directory>
+\end{minted}
+\section{Deleting Files}
+To delete a file, type the following command:
+\begin{minted}[]{bash}
+rm <file>
+\end{minted}
+
+\chapter{More Complex Commands}
+In the last chapter we went over some of the simpler commands. These should be all you need to know for doing simple tasks. However, there are some more complex commands that we will need for the project.
+
+\section{Python Preamble}
+To run a python script, you will need to make sure that the python interpreter is installed on your computer. For this project we will use Python 3. On Windows you can run
+\begin{minted}[]{bash}
+winget install Python3 -v 3.9.6150.0
+\end{minted}
+On Mac you can install Python 3 from the website:
+\href{https://python.org/download}{here}. And on Linux you can install it using your package manager. When running python you may need to specify what version of python you are using. For example:
+\begin{minted}[]{bash}
+python3 
+\end{minted}
+or
+\begin{minted}[]{bash}
+python 
+\end{minted}
+To check what version of python you are using, type the following command:
+\begin{minted}[]{bash}
+python -V
+\end{minted}
+or
+\begin{minted}[]{bash}
+python3 -V
+\end{minted}
+\section{Running Python Scripts}
+To run a python script, type the following command:
+\begin{minted}[]{bash}
+python <script>
+\end{minted}
+or 
+\begin{minted}[]{bash}
+python3 <script>
+\end{minted}
+
+\section{Running Python Scripts with Parameters}
+To run a python script with parameters, type the following command:
+\begin{minted}[]{bash}
+python <script> --help
+\end{minted}
+This will show you the parameters that the script accepts.
+There are two types of parameters: required parameters and optional parameters.
+Required parameters are parameters that the script requires to run. Optional parameters are parameters that the script can accept but does not require to run. There are two types of parameters long and short. Long parameters start with a double dash and short parameters start with a single dash. For example:
+\begin{minted}[]{bash}
+python <script> --help
+python <script> -h
+\end{minted}
+\section{Installing Python Dependencies}
+Python scripts often require dependencies to run. You can use PIP aka PIP Installs Packages to install these dependencies. To install a dependency, type the following command:
+\begin{minted}[]{bash}
+pip install <dependency>
+\end{minted}
+or
+\begin{minted}[]{bash}
+pip3 install <dependency>
+\end{minted}
+
+In this project we will have a lot of different dependencies so to make things easier we will install all of them at once using a requirements.txt file which contains all the dependencies and their versions.
+\begin{minted}[]{bash}
+pip install -r requirements.txt
+pip3 install -r requirements.txt
+\end{minted}
+
+
+
+
+
+\end{document}
