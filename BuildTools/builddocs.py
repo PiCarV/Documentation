@@ -83,7 +83,7 @@ def zipdir(path, ziph):
                        os.path.relpath(os.path.join(root, file), 
                                        os.path.join(path, '..')))
 
-with zipfile.ZipFile('output.zip', 'w', zipfile.ZIP_DEFLATED) as zipf:
+with zipfile.ZipFile('documentation.zip', 'w', zipfile.ZIP_DEFLATED) as zipf:
     zipdir('./output/', zipf)
 
 
