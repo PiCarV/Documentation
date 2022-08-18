@@ -53,7 +53,7 @@ Before you start your lab it is a good idea to familiarize yourself with PiCar's
 
 \chapter{Start of the Lab}
 \section{Setup}
-On your laptop, you will need to install VSCode and Python 3. Once installed open VSCode and click File $\Rightarrow$ Open Folder and select or create a folder in a convenient location on your laptop. This will be your working directory (Where our project files for this lab will be stored). Next, you can create a fresh Python file by clicking File $\Rightarrow$ New File and selecting Python. You can call this file straight.py. After this, we need to run some commands to install the required packages. Click on Terminal $\Rightarrow$ New Terminal. A Terminal should open at the bottom of your screen. Then you can go to our github repository \href{https://github/PiCarV/Demos}{here} and download and unzip the repository. In the top level you will find a file called "requirements.txt" This contains all the dependencies you will need for the course. You can copy it into your VSCode workspace and run the following command:
+On your laptop, you will need to install VSCode and Python 3. Once installed open VSCode and click File $\Rightarrow$ Open Folder and select or create a folder in a convenient location on your laptop. This will be your working directory (Where our project files for this lab will be stored). Next, you can create a fresh Python file by clicking File $\Rightarrow$ New File and selecting Python. You can call this file straight.py. After this, we need to run some commands to install the required packages. Click on Terminal $\Rightarrow$ New Terminal. A Terminal should open at the bottom of your screen. Then you can go to our github repository \href{https://github.com/PiCarV/Demos}{here} and download and unzip the repository. In the top level you will find a file called "requirements.txt" This contains all the dependencies you will need for the course. You can copy it into your VSCode workspace and run the following command:
 \begin{minted}[]{bash}
 pip install -r requirements.txt
 \end{minted}
@@ -120,6 +120,9 @@ You may have noticed that the IP address ends with ‘:3000’. This number atta
     \end{minted}
 
 \section{Testing}
+
+\notebox{\textbf{Note:} This code runs standalone, you do not need to have the PiCar controller running at the same time. The only requirement is that you are connected to the PiCar network. One more thing, while you technically can connect more than one device to the PiCar network, it is not recommended.}
+
 We will now test to see if the code we wrote works. To do this first turn on the PiCar and connect to the WiFi network. In visual studio code, you can press the run button in the top right corner. It looks like a green play arrow. Before running your code, ensure that your PiCar is in an area that is safe to move (i.e. not going to fall off a table). Pressing this button will run the code that we wrote. If all goes well, you should see the PiCar move forwards and then backwards. If not, something must have gone wrong. You should go back through the lab to verify that your code is correct.
 
 \section{Your Turn}
