@@ -66,7 +66,7 @@ Dense layers are a array of weights that are placed side by side. Multiple layer
     \end{figure}
 
 The weights in each neuron in the dense layer are activated by the inputs. The activation of the neuron is the weighted sum of the inputs. The activation of the neuron is then passed through a non-linear activation function to get the output. The output of the neuron is then connected to the next layer. There are many different activation functions that can be used. A couple of common ones are displayed below.
-\\ \\ \\ \\
+ 
 \includegraphics[width=1\textwidth]{activation functions 1.jpg}
 \begin{figure}
     \begin{center}
@@ -76,7 +76,7 @@ The weights in each neuron in the dense layer are activated by the inputs. The a
     \end{center}
 \end{figure}
 
-\pagebreak 
+\pagebreak
 
 \section{Using Dense Layers in Keras}
 Keras is the Python library that we will use to create our neural network. Keras is a high level library that allows us to create neural networks in a simple and easy way. Later you will see that we provide a pre made template for you to use. However you still need to understand how to create a neural network in Keras.
@@ -84,7 +84,7 @@ Keras is the Python library that we will use to create our neural network. Keras
 
 \chapter{Start of the Lab}
 First, we will download the demo code from the \href{https://github.com/PiCarV/Demos/archive/refs/heads/main.zip}{Github Repository}.
-and then extract the files to a folder. Next, go to the folder called {PUT DIRECTORY HERE}.
+and then extract the files to a folder. Next, go to the folder called:
 
 \begin{minted}[breaklines=true, fontsize=\small]{bash} 
 Lab Code/Lab Part 4/
@@ -149,10 +149,24 @@ After you have trained your neural network, you can save it to a file. To do thi
 \pagebreak
 
 \chapter{Running the Pi Car V}
-Now that you have trained your neural network you can run the Pi Car V. To do this you can open the Demos folder you downloaded in the first part of this lab and go to the folder "Lab Code/Lab Part 4/". In this folder, you will find a file called runNetwork.py. This file will run the Pi Car V. All you need to do is connect to the Pi Car V's wifi network and then put the model.h5 file in the same folder as the runNetwork.py file. Run the file by typing "python runNetwork.py". If your file is named something else you can add some command line arguments to the file. For example "python runNetwork.py --model differentModel.h5". For a full list of command line arguments, you can type "python runNetwork.py --help".
-
+Now that you have trained your neural network you can run the Pi Car V. To do this you can open the Demos folder you downloaded in the first part of this lab and go to the folder "Lab Code". In this folder, you will find a file called requirements.txt you can install this by opening a command line and typing the following:
+\begin{minted}[]{bash}
+pip install -r requirements.txt
+\end{minted}
+Next we can go to the folder "Lab Code/Lab Part 4" you will find a file called runNetwork.py. This file will run the Pi Car V. All you need to do is connect to the Pi Car V's wifi network and then put the model.h5 file in the same folder as the runNetwork.py file. Run the file by typing 
+\begin{minted}[]{bash}
+python runNetwork.py
+\end{minted}
+If your file is named something else you can add some command line arguments to the file. For example
+\begin{minted}[]{bash}
+python runNetwork.py --model differentModel.h5    
+\end{minted}
+For a full list of command line arguments, you can type 
+\begin{minted}[]{bash}
+python runNetwork.py --help
+\end{minted}
 \section{Control the Pi Car V}
-Once the “runNetwork” file is running, a window will open. You can use this window to adjust the speed of the car and the colour mask.
+Once the “runNetwork” file is running, a window will open. You can use this window to adjust the speed of the car and the color mask.
 
 \section{Finishing Up}
 To complete this lab, you will need to experiment to get your car to follow the lane lines. This will be a bit tricky and it is okay if it is not perfect. Next lab we will introduce a new layer type that will help you achieve a better neural network.

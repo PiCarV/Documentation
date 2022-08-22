@@ -50,11 +50,8 @@ jobs:
       - name: Build the documentation
         run: sudo python3 ./BuildTools/builddocs.py
 
-      - name: Display the size of the documentation
-        run: ls -lh output.zip
-
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: ./output.zip
+          files: ./documentation.zip
