@@ -69,6 +69,7 @@
     The first task is to check if you have received all the components. The PiCarV should already be assembled and ready to go. Make sure you have these components:
 
     \begin{itemize}
+        \item Assembled PiCar
         \item 18650 Lithium-Ion Battery x2 (They should be wrapped in plastic, do not remove this!)
         \item 18650 Charger x1
         \item 18650 Charger Cable x1
@@ -89,21 +90,28 @@
 }
 
 \section{Testing the PiCarV}
-To test the PiCarV you will first need to charge the batteries by placing them in the charger. Your charger has 2 buttons on the front, you do not need to touch these.
+To test the PiCarV you will first need to charge the batteries by placing them in the charger. Your charger has 2 buttons on the front, you do not need to touch these. Keep in mind that charging the batteries will take approximately 5 to 7 hours.
+
 
 \cautionbox{
     \textbf{Warning Fire Hazzard:}
     While 18650 batteries are generally very safe, under the wrong circumstances they can be a fire hazard. To alleviate this you should always be present when charging the batteries and make sure you store the batteries away from flammable materials. Store the batteries in room temperature/cool conditions; for instance, do not leave the batteries in a hot car.
 }
 
-Once the charger has finished, the batteries can be placed into the PiCarV. Once the batteries are installed, switch on the PiCarV. You should see the lights on the side of the PiCarV start to blink. You can verify that everything is working by opening your Wi-Fi settings on your phone or laptop and checking if a hotspot has been created. The hotspot network should be called PiCarV followed by a string of letters and numbers. Make a note of the name of this network because, when multiple PiCars are running simultaneously, it may be difficult to determine which network belongs to which PiCar.
+Once the charger has finished, install the batteries into the bottom of the PiCar. Once the batteries are installed, switch on the car using the switch located behing the front right wheel. You should see the lights on the side of the PiCarV start to blink. You can verify that everything is working by opening your Wi-Fi settings on your phone or laptop and checking if a hotspot has been created. This step will take a few moments. The hotspot network should be called PiCarV followed by a string of letters and numbers. Make a note of the name of this network because, when multiple PiCars are running simultaneously, it will be difficult to determine which network belongs to which PiCar.
 
 \section{Connecting the controller to the PiCarV}
 We provide a simple controller app that you can use to check that your PiCarV is working. You can download the app from the following link. 
 % include hyperlink
 \href{https://github.com/PiCarV/Controller/releases}{PiCar Controller} Make sure you get the correct version for your operating system. EXE for windows and DMG for mac.
 
+Note
+On Windows: The exe will tell you that it is an unknown publisher.
+Click 
 
+One person connect at a time
+
+v Re word v
 Once you have installed the controller you can connect your computer to the PiCar hotspot the password is "raspberry". Next, you can open the controller app and enter the IP address of the PiCarV in the top right corner. The IP address is "192.168.0.10". Once this is entered the text that says "connected: false" should change to "connected: true" and you should see a live stream from the camera. Try to have a go controlling the PiCarV with either WASD or the arrow keys. 
 
 % show image
