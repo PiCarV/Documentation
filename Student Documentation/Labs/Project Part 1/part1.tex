@@ -107,6 +107,11 @@ To test the PiCarV you will first need to charge the batteries by placing them i
 
 Once the charger has finished, install the batteries into the bottom of the PiCar. Once the batteries are installed, switch on the car using the switch located behing the front right wheel. You should see the lights on the side of the PiCarV start to blink. You can verify that everything is working by opening your Wi-Fi settings on your phone or laptop and checking if a hotspot has been created. This step will take a few moments. The hotspot network should be called PiCarV followed by a string of letters and numbers. Make a note of the name of this network because, when multiple PiCars are running simultaneously, it will be difficult to determine which network belongs to which PiCar.
 
+\warningbox{
+    \textbf{Warning:}
+    If the batteries get too low, the PiCarV will stop responding. This can cause the PiCar to continue running the last command it received which could cause the PiCar to run away from you. This could be really bad if it is on a table.
+}
+
 \section{Connecting the controller to the PiCarV}
 We provide a simple controller app that you can use to check that your PiCarV is working. You can download the app from the following link. 
 % include hyperlink
@@ -114,6 +119,11 @@ We provide a simple controller app that you can use to check that your PiCarV is
 
 
 Once you have installed the controller you can connect your computer to the PiCar hotspot the password is "raspberry". Next, you can open the controller app and enter the IP address of the PiCarV in the top right corner. The IP address is "192.168.0.10". Once this is entered you should see a success message notification and a live stream from the camera. Try to have a go controlling the PiCarV with either WASD or the arrow keys. If you have a game controller you can also use that to control the PiCarV.
+
+\warningbox{
+    \textbf{Warning:}
+    Connecting multiple devices to your PiCar is possible; although, if your PiCar recives multiple steering / driving instructions at the same time, it will  stop responding.
+}
 
 % show image
 \begin{figure}[h]
@@ -123,12 +133,6 @@ Once you have installed the controller you can connect your computer to the PiCa
     \label{fig:Controller}
 \end{figure}
 
-\pagebreak
-
-\warningbox{
-    \textbf{Warning:}
-    If the batteries get too low, the PiCarV will stop responding. This can cause the PiCar to continue running the last command it received which could cause the PiCar to run away from you. This could be really bad if it is on a table.
-}
 
 \chapter{Finishing Up}
 Now we can control the PiCar through a simple application. The PiCar is ready for your next lab where you will learn how to send your own commands to run the PiCar using Python.
