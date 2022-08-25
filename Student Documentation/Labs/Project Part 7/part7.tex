@@ -56,7 +56,28 @@ Size is simple to determine, the size of your model will simply be the space it 
 \chapter{Tips for Optimization}
 To help you test your cars parameters, we will provide the software that we will use to grade your model. This way there should be no surprises in your grade for the project and your grade will be a direct representation of the effort that you put into the project.
 
-\notebox{\textbf{Note:} Although we are giving you the grading software, the data set that will be used to grade you is different from the data set that we are giving you in this software.s}
+\notebox{\textbf{Note:} Although we are giving you the grading software, the data set that will be used to grade you is different, so you will need to use your own data set to grade your model. We recommend using the testing set which you should not train your model on.}
+
+\section{Optimization}
+There are a few ways to optimize your model. I recommend first to get the best MSE and then try to decrease the size of your model once you have gotten the best MSE. 
+
+\subsection{Get the best MSE}
+A convolutional neural network has 2 main steps:
+\begin{enumerate}
+    \item Feature Extraction
+    \item Feature Detection
+\end{enumerate}
+
+Feature Extraction is the part of the neural network that extracts the features from the image. This is done by convolution layers. If your model is not predicting the track correctly it could be that you do not have enough convolution layers. 
+
+Feature Detection is the part of the neural network that takes the features from the image and outputs the steering angle. This is done by dense layers. If your model is not predicting the track correctly it could be that you do not have enough dense layers.
+
+\subsection{Decrease the size of your model}
+
+The main way to decrease the size of your model is to remove unimportant layers. Try to remove layers that are not needed to get the best MSE. Another way to decrease the size of your model is to add pooling layers. These layers reduce the size of the convolved image and therefore reduce the size of the model.
+
+Just remember that if you decrease the size of your model too much you could end up with a model that is not able to predict the track correctly.
+
 
 
 \end{document}
