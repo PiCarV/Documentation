@@ -34,6 +34,9 @@
 \clearpage
 
 \chapter{Introduction}
+Over the next four lab sections, you will be tasked with creating your own nerual network. To do this, each of the next four labs will be building upon eachother by teaching you how to apply every component of a nerual network one-by-one. Your ultumate goal will be to create the most accurate, fast, and efficent neural network; but, for now, your goal for each lab should be to mess around with parameters to build your understanding of how each component affects eachother.
+
+\section{Introduction}
 In this lab, we will be creating a simple neural network to predict the steering angle of the car.
 By the end of this lab, you should have a network that can drive the car and follow the lane lines. Some parts about making the neural network are out of the scope of this course so we will provide you with a starting point for your work. You can download the code for this lab from the 
 \href{https://github.com/PiCarV/Demos}{Github Repository}.
@@ -45,21 +48,16 @@ Dense layers are the most basic type of neural network layer. They are simply a 
 We can train our neural network using our computers; however, this will probably be slow depending on how powerful your computer is. To solve this hardware bottleneck, we will use a service called \href{https://www.gradient.run/}{Gradient}. This service provides a cloud-based platform for training neural networks and it is free for basic use. You will need to create a free account at the link above in order to be able to train your own neural network.
 
 \section{Data}
-We will be using 2 datasets. The first is a training dataset that we will use to train our neural network. The second is a test dataset that we will use to test our neural network. You can download the datasets from the link below. 
+We will be using 2 datasets. The first is a training dataset that we will use to train our neural network. The second is a test dataset that we will use to test our neural network (validation data). You can download the datasets from Canvas labled as "TrainingData.7zip" and "TestingData.7zip". 
 
 \warningbox{
     \textbf{Caution: }
     These files are compressed using 7zip. Do not extract this compressed file because our provided code will extract the files for you. We will show you how to do this in the next section.
 }
-
-%bold text
-\textbf{REMEMBER TO PUT THE URL HERE}
-
-\pagebreak
-
 \chapter{Dense Layers Deep Dive}
 \section{How dense layers work in practice}
 Dense layers are a array of weights that are placed side by side. Multiple layers of dense layers can be connected together by connecting each weight in the previous layer to the weight in the next layer. This may look something like this:
+
 % insert figure
 
     \begin{figure}[h]
@@ -88,8 +86,7 @@ Keras is the Python library that we will use to create our neural network. Keras
 
 
 \chapter{Start of the Lab}
-First, we will download the demo code from the \href{https://github.com/PiCarV/Demos/archive/refs/heads/main.zip}{Github Repository}.
-and then extract the files to a folder. Next, go to the folder called:
+First, we will download the demo code from the \href{https://github.com/PiCarV/Demos/archive/refs/heads/main.zip}{Github Repository}. The demo code should automatically download after clicking on this link. If it doesn't, you can find the demo code on the Github Repository and manualy download it. Once downloaded, extract the files to a folder. Next, go to the folder called:
 
 \begin{minted}[breaklines=true, fontsize=\small]{bash} 
 Lab Code/Lab Part 4/
@@ -153,7 +150,8 @@ After you have trained your neural network, you can save it to a file. To do thi
 
 \pagebreak
 
-\chapter{Running the Pi Car V}
+\chapter{Running the Pi Car V} 
+\textbf{Andre please clarify how to install requirements} \\
 Now that you have trained your neural network you can run the Pi Car V. To do this you can open the Demos folder you downloaded in the first part of this lab and go to the folder "Lab Code". In this folder, you will find a file called requirements.txt you can install this by opening a command line and typing the following:
 \begin{minted}[]{bash}
 pip install -r requirements.txt
