@@ -151,12 +151,9 @@ After you have trained your neural network, you can save it to a file. To do thi
 \pagebreak
 
 \chapter{Running the Pi Car V} 
-\textbf{Andre please clarify how to install requirements} \\
-Now that you have trained your neural network you can run the Pi Car V. To do this you can open the Demos folder you downloaded in the first part of this lab and go to the folder "Lab Code". In this folder, you will find a file called requirements.txt you can install this by opening a command line and typing the following:
-\begin{minted}[]{bash}
-pip install -r requirements.txt
-\end{minted}
-Next we can go to the folder "Lab Code/Lab Part 4" you will find a file called runNetwork.py. This file will run the Pi Car V. All you need to do is connect to the Pi Car V's wifi network and then put the model.h5 file in the same folder as the runNetwork.py file. Run the file by typing 
+Now that you have trained your neural network you can run the Pi Car V. You should already have all the required dependencies installed. If you haven't you can go back to lab 2.
+Next we can download the software for running your network on the Pi Car V. This software is provided for you as writing this code yourself could be a bit of a challenge. You can find the script 
+\href{https://raw.githubusercontent.com/PiCarV/CarRunner/main/carRunner.py}{carRunner.py} here. This will open in your default web browser. You can then right click and select "Save As...". Save the file somewhere on your computer.
 \begin{minted}[]{bash}
 python runNetwork.py
 \end{minted}
