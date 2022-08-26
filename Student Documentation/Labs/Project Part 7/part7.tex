@@ -35,23 +35,23 @@
 
 \chapter{Introduction}
 \section{Introduction}
-In our last lab, you were shown how to use dropout layers in your neural network. By combining dropout layers along with your previous knowledge of convolution layers and dense layers, hopefully you have been successful in creating a neural network that can accurately and quickly follow lanes.
+In our last lab, you were shown how to use dropout layers in your neural networks. By combining dropout layers along with your previous knowledge of convolution layers and dense layers, hopefully you have been successful in creating a neural network that can accurately and quickly follow lanes.
 \\ \\
-In this lab, we will only be disscussing the measures and parameters that will be used to grade your model. The intention for this lab is that it will give you a clear outline of what is expected from your neural network and with the extra time, it will give you an opprotunity to perfect your model.
+In this lab, we will only be discussing the measures and parameters that will be used to grade your model. The intention for this lab is that it will give you a clear outline of what is expected from your neural network and with the extra time, it will give you an opportunity to perfect your model.
 
 \chapter{Big Three}
 The "Big Three" things that your models will be graded on are as follows:
     Accuracy, Speed, and Size.
-Your models will be runned through a script which will record your MSE values and the size of your model. The speed of your models will be determine by how fast your car can complete a circuite
+Your models will be runned through a script which will record your MSE values and the size of your model. The speed of your models will be determined by how fast your car can complete a circuit.
 
 \section{Accuracy}
-Accuracy will be determined through the Mean Squared Error (MSE) of your model. The lower the MSE, the better your model. The MSE is calculated by taking the difference between the actual and predicted values and squaring it. To prevent you from simply overfitting your model to get the best MSE, your model will be run through a validation set. This set has never be seen by your algorithm so overfitting is not a method of getting the best MSE.
+Accuracy will be determined through the Mean Squared Error (MSE) of your model. The lower the MSE, the better your model. The MSE is calculated by taking the difference between the actual and predicted values and squaring it. To prevent you from simply overfitting your model to get the best MSE, your model will be run through a validation set. This set has never been seen by your algorithm, so overfitting is not a method of getting the best MSE.
 
 \section{Speed}
-Speed will be determined by the time it takes to run your model. The faster your model runs, the better your model. We will determine this by running your car through a track and measuring the time it takes. The better your model runs, the faster your car will be able to complete the track. Remember that you can controll the speed of your car while it is self driving but you can only go as fast as your neural network can think. 
+Speed will be determined by the time it takes to run your model. The faster your model runs, the better your model. We will determine this by running your car through a track and measuring the time it takes. The better your model runs, the faster your car will be able to complete the track. Remember that you can control the speed of your car while it is self-driving, but you can only go as fast as your neural network can think. 
 
 \section{Size}
-Size is simple to determine, the size of your model will simply be the space it takes up on your computer. The smaller the model, the better your model. An un-optimized model will take up to 2GB of space on your computer. On the other hand you can optimize your model to smaller than 5MB of space. It is up to you to determine whether you want to go for a larger model that is more Accurate or a smaller model that is faster and takes up less space.
+Size is simple to determine; the size of your model will simply be the space it takes up on your computer. The smaller the model, the better your model. An un-optimized model will take up to 2GB of space on your computer. On the other hand, you can optimize your model to be smaller than 5MB of space. It is up to you to determine whether you want to go for a larger model that is more accurate or a smaller model that is faster and takes up less space.
 
 \chapter{Tips for Optimization}
 To help you test your cars parameters, we will provide the software that we will use to grade your model. This way there should be no surprises in your grade for the project and your grade will be a direct representation of the effort that you put into the project.
@@ -68,16 +68,17 @@ A convolutional neural network has 2 main steps:
     \item Feature Detection
 \end{enumerate}
 
-Feature Extraction is the part of the neural network that extracts the features from the image. This is done by convolution layers. If your model is not predicting the track correctly it could be that you do not have enough convolution layers. 
+Feature Extraction is the part of the neural network that extracts features from the image. This is done by convolution layers. If your model is not predicting the track correctly, it could be that you do not have enough convolution layers.
 
-Feature Detection is the part of the neural network that takes the features from the image and outputs the steering angle. This is done by dense layers. If your model is not predicting the track correctly it could be that you do not have enough dense layers.
+Feature Detection is the part of the neural network that takes features from the image and outputs the steering angle. This is done by dense layers. If your model is not predicting the track correctly, it could be that you do not have enough dense layers.
 
 \subsection{Decrease the size of your model}
 
 The main way to decrease the size of your model is to remove unimportant layers. Try to remove layers that are not needed to get the best MSE. Another way to decrease the size of your model is to add pooling layers. These layers reduce the size of the convolved image and therefore reduce the size of the model.
 
-Just remember that if you decrease the size of your model too much you could end up with a model that is not able to predict the track correctly.
+Just remember that if you decrease the size of your model too much, you could end up with a model that is not able to predict the track correctly.
 
-
+\chapter{Finished!}
+Hopefully, you now have a clear understanding of what makes a good neural network! Use all of the tools that you've learned and the remaining time of this lab to perfect your model to be the best that it can!
 
 \end{document}
