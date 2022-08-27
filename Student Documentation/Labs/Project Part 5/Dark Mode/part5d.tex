@@ -27,7 +27,7 @@
     pdfborder={0 0 0}
 }
 
-\graphicspath{{./images/}}
+\graphicspath{{../images/}}
 
 \title{APSC 258: Lab 5 Manual}
 \author{Andre Cox \\ Scott Halston}
@@ -40,44 +40,44 @@
 
 \chapter{Introduction}
 \section{Introducing the Convolution Layer}
-In our last lab, you got to work with dense layers. You may have noticed that the neural network was not very effective. In this lab, we will introduce the concept of Convolution layers. To explain why we use these layers we must first revisit the idea of a dense layer. You can think of a dense layer as a layer of neurons. The neurons in a dense layer are simply a weighted sum of the inputs. When training the neural network these weights get adjusted until the network is able to predict the correct output. This is a great way to predict simple things such as the average grade a student may achieve based on class attendance and the amount of homework they have done. However, they become less effective as the number and complexity of the inputs increase. For instance, let's say we have an image of our track that we feed into some dense layers. These dense layers may be able to predict the steering angle of the car however they may get confused depending on the different features of the image. This is because these layers represent the image in 2 dimensions. Let me give you an example. 
+In our last lab, you got to work with dense layers. You may have noticed that your neural network was not very effective. In this lab, we will introduce the concept of Convolution layers. To explain why we use these layers, we must first revisit the idea of a dense layer. You can think of a dense layer as a layer of neurons. The neurons in a dense layer are simply a weighted sum of the inputs. When training the neural network, these weights get adjusted until the network is able to predict the correct output. This is a great way to predict simple things such as the average grade a student may achieve based on class attendance and the amount of homework they have done. However, they become less effective as the number and complexity of the inputs increase. For instance, let's say we have an image of our track that we feed into some dense layers. These dense layers may be able to predict the steering angle of the car; however, they may get confused depending on the different features of the image. This is because these layers represent the image in 1 dimension. Let me give you an example.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.8\textwidth]{./images/dogdense.png}
+\includegraphics[width=0.8\textwidth]{dogdense.png}
 \caption{A 1D representation of an image}
 \label{fig:1d}
 \end{figure}
 
-Can you tell what this above image is? Probably not easily. This is essentially what our neural network uses to learn with respect to dense layers. We need a way to represent the image in a 2-dimensional space.
+Can you tell what this above image is? Probably not easily. This is essentially what our neural networks use to learn with respect to dense layers. We need a way to represent the image in a 2-dimensional space.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.5\textwidth]{./images/dogconv.png}
+\includegraphics[width=0.5\textwidth]{dogconv.png}
 \caption{A 2D representation of an image}
 \label{fig:2d}
 \end{figure}
 
 \pagebreak
 
-You can see that the image is now represented in a 2-dimensional space and is now much easier to understand. This is why convolution layers are so useful. 
-In summary for your understanding, dense layers essentially view data in a 1-dimensional array, whereas convolution layers view data in a 2-dimensional array
+You can see that the image is now represented in a 2-dimensional space and is now much easier to understand. This is why convolution layers are so useful.
+In summary, for your understanding, dense layers essentially view data in a 1-dimensional array, whereas convolution layers view data in a 2-dimensional array
 
 \section{More on Convolution Layers}
-Convolution layers are useful for feature extraction. For instance, if we were running facial recognition we would use multiple layers that would each progressively extract features with more and more detail. An example of this is shown below.
+Convolution layers are useful for feature extraction. For instance, if we were running facial recognition, we would use multiple layers that would each progressively extract features with more and more detail. An example of this is shown below.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.8\textwidth]{./images/featureextraction.jpg}
+\includegraphics[width=0.8\textwidth]{featureextraction.jpg}
 \caption{Extracting features from an image}
 \label{fig:conv1}
 \end{figure}
 
-After we have extracted our features, we can use a Flatten layer to turn the features back into a 1-dimensional vector. This can then be used as input to a dense layer. A representation of this is shown below. In the code shown below, there is also a pooling layer. Pooling layers just reduce the size of the image. This is useful for increasing the efficiency of the network.
+After we have extracted our features, we can use a Flatten layer to turn the features back into a 1-dimensional vector. This can then be used as input to a dense layer. A representation of this is shown below. In the code shown below, there is also a pooling layer. Pooling layers just reduces the size of the image. This is useful for increasing the efficiency of the network.
 
 \begin{figure}[h]
 \centering
-\includegraphics[width=0.8\textwidth]{./images/convexamp.jpeg}
+\includegraphics[width=0.8\textwidth]{convexamp.jpeg}
 \caption{Representation of a CNN}
 \label{fig:cnn}
 \end{figure}
@@ -85,7 +85,7 @@ After we have extracted our features, we can use a Flatten layer to turn the fea
 \clearpage
 
 \chapter{Using the Convolution Layer}
-Now that we have a better understanding of the convolution layer we can use it in our neural network.
+Now that we have a better understanding of the convolution layer, we can use it in our neural network.
 \section{Creating a Convolution Layer}
 Below is a simple example of a convolutional neural network. For your understanding, all of the parameters are explained within the code. It is highly recommended to go through this code on your own to better your understanding of convolution layers and neural networks.
 \begin{minted}[linenos, fontfamily=courier, style=monokai, bgcolor=black, breaklines]{python} 
@@ -119,8 +119,8 @@ Below is a simple example of a convolutional neural network. For your understand
 \end{minted}
 
 \chapter{Applying the Convolution Layer}
-Now that you have a good grasp of the convolution layer we can apply it to our neural network. Open the model from your previous lab and add try experimenting by adding the convolution layer to the model. See if multiple convolution layers function better than a single one. Once you are done with this and are happy with your model you can save the model and download it. Then you can run the model with the following code.
-"python runNetwork.py -m yourConvolutionModel.h5"
+Now that you have a good grasp of the convolution layer, we can apply it to our neural networks. Open the model from your previous lab and add, try experimenting by adding the convolution layer to the model. Remember to also add a maxpooling and a flattening layer when adding convolution layers. See if multiple convolution layers function better than a single one. Once you are done with this and are happy with your model, you can save the model and download it. Then you can run the model with the following code.
+"python runNetwork.py -m yourConvolutionModel.h5"  
 
 \notebox{
     \textbf{Roadblock:}

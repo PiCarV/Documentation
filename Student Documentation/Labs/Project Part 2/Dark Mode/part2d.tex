@@ -12,10 +12,10 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage[default,light,black]{roboto}
 
-% DarkMode
+% Darkmode
 \usepackage{xcolor}
 \pagecolor[rgb]{0,0,0} %black
-\color[rgb]{0.7,0.7,0.7} %grey
+\color[rgb]{0.5,0.5,0.5} %grey
 
 \hypersetup{
     colorlinks=true,
@@ -26,7 +26,7 @@
     pdfborder={0 0 0}
 }
 
-\graphicspath{{./images/}}
+\graphicspath{{../images/}}
 
 \title{APSC 258: Lab 2 Manual}
 \author{Andre Cox \\ Scott Halston}
@@ -48,16 +48,24 @@ In the first lab, you were able to control the PiCar using the provided controll
 
 Before you start your lab it is a good idea to familiarize yourself with PiCar's (Python) API; the Javascript API is not needed. You can find the API documentation here:
 \href{https://github.com/PiCarV/Car-Software/wiki/Pi-Car-V-API-Documentation}{PiCar
-    API Documentation}. During this lab, we discuss this API in more detail. It is suggested that you complete the following setup section to install VSCode and Python 3 on your laptop before attending your lab to save some time.
+    API Documentation}. During this lab, we will discuss this API in more detail. It is suggested that you complete the following setup section to install VSCode and Python 3 on your laptop before attending your lab to save some time.
+
+\section{Software needed for this lab}
+\begin{itemize}
+    \item Python 3
+    \item VSCode   
+\end{itemize}
 
 \chapter{Start of the Lab}
 \section{Setup}
-On your laptop, you will need to install VSCode and Python 3. Once installed open VSCode and click File $\Rightarrow$ Open Folder and select or create a folder in a convenient location on your laptop. This will be your working directory (Where our project files for this lab will be stored). Next, you can create a fresh Python file by clicking File $\Rightarrow$ New File and selecting Python. You can call this file straight.py. After this, we need to run some commands to install the required packages. Click on Terminal $\Rightarrow$ New Terminal. A Terminal should open at the bottom of your screen. Type the following commands into the Terminal:
-\begin{minted}[fontfamily=courier, style=monokai, breaklines, frame=single,framesep=10pt]{shell}
-    pip install socketio 
-    \end{minted}
-This will install the socketio package. We will use this package to connect to the PiCar.
-
+On your laptop, you will need to install VSCode and Python 3. Once installed, open VSCode and click File $\Rightarrow$ Open Folder and select or create a folder in a convenient location on your laptop. This will be your working directory (where our project files for this lab will be stored). Next, you can create a fresh Python file by clicking File $\Rightarrow$ New File and selecting Python. You can call this file straight.py. After this, we need to run some commands to install the required packages. Click on Terminal $\Rightarrow$ New Terminal. A Terminal should open at the bottom of your screen. Then you can go to our github repository \href{https://github.com/PiCarV/Demos}{here} and download and unzip the repository. In the top level you will find a file called "requirements.txt" This contains all the dependencies you will need for the course. You can copy it into your VSCode workspace and run the following command:
+\begin{minted}[]{bash}
+pip install -r requirements.txt
+\end{minted}
+or 
+\begin{minted}[]{bash}
+pip3 install -r requirements.txt
+\end{minted}
 \section{Code}
 In this section, we will write some code to make the PiCar move forwards then backwards. This code will be written in steps and should guide you through the process of writing code to control the PiCar. The first step is to import the packages.
 \begin{minted}[linenos, fontfamily=courier, style=monokai, bgcolor=black, breaklines]{python}
@@ -77,7 +85,7 @@ Next, we will create a socketio object. This is a special variable that contains
     sio = socketio.Client()
     \end{minted}
 
-Now we will tell socketio to connect to the PiCar. To do this we will need to know the IP address of the PiCar. An IP address is essentially a number that represents the location of a computer on the internet. In our instance, we need to know where the Raspberry Pi is located in order to connect to it. Since all of the PiCar's are running the same software the IP address will always be "192.168.0.10". Let's write some code to do this.
+Now we will tell socketio to connect to the PiCar. To do this we will need to know the IP address of the PiCar. An IP address is essentially a number that represents the location of a computer on the internet. In our instance, we need to know where the Raspberry Pi is located in order to connect to it. Since all of the PiCar's are running the same software, the IP address will always be "192.168.0.10". Let's write some code to do this.
 
 \begin{minted}[linenos, fontfamily=courier, style=monokai, bgcolor=black, breaklines]{python}
     # connect to the PiCar
@@ -91,7 +99,7 @@ Now we will tell socketio to connect to the PiCar. To do this we will need to kn
         print("Check that your laptop is connected to the PiCar network")
     \end{minted}
 
-You may have noticed that the IP address ends with ‘:3000’. This number attached to the IP address is called a port. We use ports because we may have multiple services that we may want to connect to. For instance, when you visit a website that uses port 443, a Remote desktop uses port 3389. In our case our socket server runs on port 3000, later we'll learn about another service that is running on the PiCar and using a different port. Now that we understand why the above code works, we should be able to make the PiCar move!
+You may have noticed that the IP address ends with ‘:3000’. This number attached to the IP address is called a port. We use ports because we may have multiple services that we may want to connect to. For instance, when you visit a website that uses port 443, a remote desktop uses port 3389. In our case our socket server runs on port 3000; later we'll learn about another service that is running on the PiCar and using a different port. Now that we understand why the above code works, we should be able to make the PiCar move!
 
 \begin{minted}[linenos, fontfamily=courier, style=monokai, bgcolor=black, breaklines]{python}
     # now we can start moving the car
@@ -117,7 +125,10 @@ You may have noticed that the IP address ends with ‘:3000’. This number atta
     \end{minted}
 
 \section{Testing}
-We will now test to see if the code we wrote works. To do this first turn on the PiCar and connect to the WiFi network. In visual studio code, you can press the run button in the top right corner. It looks like a green play arrow. Before running your code, ensure that your PiCar is in an area that is safe to move (i.e. not going to fall off a table). Pressing this button will run the code that we wrote. If all goes well, you should see the PiCar move forwards and then backwards. If not, something must have gone wrong. You should go back through the lab to verify that your code is correct.
+
+\notebox{\textbf{Note:} This code runs standalone; you do not need to have the PiCar controller running at the same time. The only requirement is that you are connected to the PiCar network. One more thing, while you technically can connect more than one device to the PiCar network, it is not recommended.}
+
+We will now test to see if the code we wrote works. To do this, first turn on the PiCar and connect to the WiFi network. In Visual Studio code, you can press the run button in the top right corner. It looks like a green play arrow. Before running your code, ensure that your PiCar is in an area that is safe to move (i.e., not going to fall off a table). Pressing this button will run the code that we wrote. If all goes well, you should see the PiCar move forwards and then backwards. If not, something must have gone wrong. You should go back through the lab to verify that your code is correct.
 
 \section{Your Turn}
 

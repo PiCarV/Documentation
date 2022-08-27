@@ -13,10 +13,10 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage[default,light,black]{roboto}
 
-% DarkMode
+% Darkmode
 \usepackage{xcolor}
 \pagecolor[rgb]{0,0,0} %black
-\color[rgb]{0.7,0.7,0.7} %grey
+\color[rgb]{0.5,0.5,0.5} %grey
 
 \hypersetup{
     colorlinks=true,
@@ -27,7 +27,7 @@
     pdfborder={0 0 0}
 }
 
-\graphicspath{{./images/}}
+\graphicspath{{../images/}}
 
 \title{APSC 258: Lab 3 Manual}
 \author{Andre Cox \\ Scott Halston}
@@ -39,17 +39,13 @@
 \clearpage
 
 \chapter{Introduction}
-In the previous lab, you learned how to control the PiCar using the provided Python API. Within this lab, you will learn how to receive video from the PiCar Camera and display it. In addition, you will also learn how to process the video to make it easier for a neural network to understand. To do this we will use the Open Computer Vision (OpenCV) library. 
-Your goal should be that by the end of this lab, you will have successfully received a video input from your PiCar and processed this video for your future neural network. Alongside this goal, it is also expected that you will gain an understanding of HSV colour space.
+In the previous lab, you learned how to control the PiCar using the provided Python API. Within this lab, you will learn how to receive video from the PiCar Camera and display it. In addition, you will also learn how to process the video to make it easier for a neural network to understand. To do this we will use the Open Computer Vision (OpenCV) library.
+Your goal by the end of this lab should be to successfully receive a video input from your PiCar and process this video for your future neural networks. Alongside this goal, it is also expected that you will gain an understanding of HSV colour space.
 
 \chapter{Start of the Lab}
 \section{Setup}
-On your laptop you will need to install OpenCV you can do this with the following command:
-\begin{minted}[fontfamily=courier, style=monokai, breaklines, frame=single,framesep=10pt]{shell}
-    pip install opencv-python  
-\end{minted}
-
-We are using the OpenCV library in order to obtain the video from our PiCar.  To accomplish this we will write some code.
+You should already have the dependencies installed from the previous lab.
+We are using the OpenCV library in order to obtain the video from our PiCar. To accomplish this we will write some code.
 
 You will need to create a new Python file called imageprocessing.py. We will write the code in this file.
 Try to follow along with the provided code snippets below to understand how this works. 
@@ -85,16 +81,16 @@ Following, we will use a while loop to get and display the video. Without this w
             break
 \end{minted}
 
-If you’ve managed to follow along up until this point, great! Hopefully, this has been relatively easy so far.
-Your next step is to connect to the PiCar's WiFi and then run the imageprocessing.py file you just created to receive the video feed. If successful, you should see a window open with the PiCar's video streaming to it.
+If you’ve managed to follow along up to this point, great! Hopefully, this has been relatively easy so far.
+Your next step is to connect to the PiCar's WiFi and then run the imageprocessing.py file you just created to receive the video feed. If successful, you should see a window open with the PiCar video streaming to it.
 
 \chapter{Image Processing}
-In the last chapter, we got the video from the PiCar Camera and displayed it. In this chapter, we will learn how to process the video to make it easier for a neural network to understand. To do this we will use the OpenCV library to isolate the green colour channel. We chose to isolate green because the painter's tape we are using to create our tracks is green. 
+In the last chapter, we got the video from the PiCar Camera and displayed it. In this chapter, we will learn how to process video to make it easier for a neural network to understand. To do this we will use the OpenCV library to isolate the green colour channel. We chose to isolate green because the painter's tape we are using to create our tracks is green.
 
 \pagebreak
 
 \section{Theory}
-The theory for why we are isolating green is very simple. We will use the HSV colour space to isolate the green colour. The HSV colour space is used to represent a colour in terms of Hue, Saturation, and Value. The Hue is the colour, the Saturation is the intensity of the colour, and the Value is the brightness of the colour. You may already be familiar with the RGB colour space where Red, Green, and Blue are mixed with each other to create any colour. We use the HSV colour space because it is much easier to isolate a range of colours. All we have to do is specify a range of Hue values.
+The theory for why we are isolating green is very simple. We will use the HSV colour space to isolate the green colour. The HSV colour space is used to represent a colour in terms of Hue, Saturation, and Value. The Hue is the colour; the Saturation is the intensity of the colour, and the Value is the brightness of the colour. You may already be familiar with the RGB colour space where Red, Green, and Blue are mixed with each other to create any colour. We use the HSV colour space because it is much easier to isolate a range of colours. All we have to do is specify a range of Hue values.
 
 \begin{figure}[htbp]
     \centering
@@ -136,16 +132,17 @@ Let's practice isolating for green. To do this we will modify the code we wrote 
 
 \end{minted}
 
-When you run the modified code you should see two windows open. The first window is the PiCar's video and the second window is the mask. The mask is a binary image that is white where the green is and black where there is no green. Remember you need to be connected to the PiCar's WiFi to see the PiCar's video.
+When you run the modified code, you should see two windows open. The first window is the PiCar video and the second window is the mask. The mask is a binary image, that is white where the green is, and black where there is no green. Remember, you need to be connected to the PiCar's WiFi to see the PiCar's video.
 
 \notebox{
     \textbf{Reasons for Image Processing:}
-    Image processing is used when there is a lot of data that could confuse a neural network. Through image processing, we can get rid of the data that is not needed. In our situation, we just removed approximately 2/3 of our data; which means, our neural network will learn much faster
+    Image processing is used when there is a lot of data that could confuse a neural network. Through image processing, we can get rid of data that is not needed. In our situation, we just removed approximately 2/3 of our data; which means, our neural network will learn much faster
 }
 
 \chapter{End of the Lab}
-Now we have a processed video stream that can be used to train a neural network. In the next lab, we will train a simple neural network to recognize our track.
-
+Congratulations! We have now processed a video stream so that it can be used to train a neural network. As a note to reduce future stress, you will not be required to write code for the processing of your video stream when you are creating your neural network. 
+\\
+In the next lab, we will train a simple neural network to recognize our track. It is strongly recommended that you pre-read Lab 4 before attending your lab session.
 
 
 \end{document}

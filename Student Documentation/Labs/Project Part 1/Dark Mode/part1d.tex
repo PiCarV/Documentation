@@ -13,10 +13,10 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage[default,light,black]{roboto}
 
-% DarkMode
+% Darkmode
 \usepackage{xcolor}
 \pagecolor[rgb]{0,0,0} %black
-\color[rgb]{0.7,0.7,0.7} %grey
+\color[rgb]{0.5,0.5,0.5} %grey
 
 \hypersetup{
     colorlinks=true,
@@ -27,7 +27,7 @@
     pdfborder={0 0 0}
 }
 
-\graphicspath{{./images/}}
+\graphicspath{{../images/}}
 
 \title{APSC 258: Lab 1 Manual}
 \author{Andre Cox \\ Scott Halston}
@@ -54,6 +54,14 @@
     \section{Introducing the Self Driving Car Project}
     Over the course of this semester, we will be creating a rudimentary self-driving car. As it is impractical, and unsafe, for us to train a typical car to drive around in the real world, we will instead use remote-controlled cars. This car will have a camera that can see the "road" which we will create using painter's tape. At the end of the semester, we will have a competition to see how capable each team's car is.
 
+    \section{Software Needed for this Lab}
+    For this lab, you will need to install the following software:
+    \begin{itemize}
+        \item 
+        \href{https://github.com/PiCarV/Controller/releases/latest}{PiCarV/Controller} Available for Windows, Mac, and Linux     
+    \end{itemize}
+
+
     % page break
     \clearpage
 
@@ -73,12 +81,13 @@
     The first task is to check if you have received all the components. The PiCarV should already be assembled and ready to go. Make sure you have these components:
 
     \begin{itemize}
-        \item 18650 Lithium-Ion Battery x2 (They should be wrapped in plastic, do not remove this!)
+        \item The Assembled PiCarV
+        \item 18650 Lithium-Ion Battery x2 (They should be wrapped in plastic; do not remove this!)
         \item 18650 Charger x1
         \item 18650 Charger Cable x1
     \end{itemize}
 
-    In addition to verifying that you have all received all of the above components, you should look to make sure that nothing is obviously broken and that no cables are unplugged on your PiCarV.
+    In addition to verifying that you have received all of the above components, you should look to make sure that nothing is obviously broken and that no cables are unplugged on your PiCarV.
 
 \begin {figure}[h]
     \centering
@@ -93,22 +102,31 @@
 }
 
 \section{Testing the PiCarV}
-To test the PiCarV you will first need to charge the batteries by placing them in the charger. Your charger has 2 buttons on the front, you do not need to touch these.
+To test the PiCarV you will first need to charge the batteries by placing them in the charger. Your charger has 2 buttons on the front; you do not need to touch these. Keep in mind that charging the batteries will take approximately 5 to 7 hours.
 
 \cautionbox{
     \textbf{Warning Fire Hazzard:}
-    While 18650 batteries are generally very safe, under the wrong circumstances they can be a fire hazard. To alleviate this you should always be present when charging the batteries and make sure you store the batteries away from flammable materials. Store the batteries in room temperature/cool conditions; for instance, do not leave the batteries in a hot car.
+    While 18650 batteries are generally very safe, under the wrong circumstances, they can be a fire hazard. To alleviate this you should always be present when charging the batteries and make sure you store the batteries away from flammable materials. Store the batteries in room temperature/cool conditions; for instance, do not leave the batteries in a hot car.
 }
 
-Once the charger has finished, the batteries can be placed into the PiCarV. Once the batteries are installed, switch on the PiCarV. You should see the lights on the side of the PiCarV start to blink. You can verify that everything is working by opening your Wi-Fi settings on your phone or laptop and checking if a hotspot has been created. The hotspot network should be called PiCarV followed by a string of letters and numbers. Make a note of the name of this network because, when multiple PiCars are running simultaneously, it may be difficult to determine which network belongs to which PiCar.
+Once the charger has finished, install the batteries into the bottom of the PiCar. Once the batteries are installed, switch on the car using the switch located behind the front right wheel. You should see the lights on the side of the PiCarV start to blink. You can verify that everything is working by opening your Wi-Fi settings on your phone or laptop and checking if a hotspot has been created. This step will take a few moments. The hotspot network should be called PiCarV followed by a string of letters and numbers. Make a note of the name of this network because, when multiple PiCars are running simultaneously, it will be difficult to determine which network belongs to which PiCar.
+
+\warningbox{
+    \textbf{Warning:}
+    If the batteries get too low, the PiCarV will stop responding. This can cause the PiCar to continue running the last command it received, which could cause the PiCar to run away from you. This could be really bad if it is on a table.
+}
 
 \section{Connecting the controller to the PiCarV}
 We provide a simple controller app that you can use to check that your PiCarV is working. You can download the app from the following link. 
-% include hyperlink
-\href{https://github.com/PiCarV/Controller/releases}{PiCar Controller} Make sure you get the correct version for your operating system. EXE for windows and DMG for mac.
+\href{https://github.com/PiCarV/Controller/releases/latest}{PiCar Controller} Make sure you get the correct version for your operating system. EXE for windows, DMG for mac and AppImage, rpm or deb for Linux.
 
 
-Once you have installed the controller you can connect your computer to the PiCar hotspot the password is "raspberry". Next, you can open the controller app and enter the IP address of the PiCarV in the top right corner. The IP address is "192.168.0.10". Once this is entered the text that says "connected: false" should change to "connected: true" and you should see a live stream from the camera. Try to have a go controlling the PiCarV with either WASD or the arrow keys. 
+Once you have installed the controller you can connect your computer to the PiCar hotspot; the password is "raspberry". Next, you can open the controller app and enter the IP address of the PiCarV in the top right corner. The IP address is "192.168.0.10". Once this is entered you should see a success message notification and a live stream from the camera. Try to have a go controlling the PiCarV with either WASD or the arrow keys. If you have a game controller, you can also use that to control the PiCarV.
+
+\warningbox{
+    \textbf{Warning:}
+    Connecting multiple devices to your PiCar is possible; however, if your PiCar receives multiple steering / driving instructions at the same time, it will stop responding.
+}
 
 % show image
 \begin{figure}[h]
@@ -117,6 +135,7 @@ Once you have installed the controller you can connect your computer to the PiCa
     \caption{Controller}
     \label{fig:Controller}
 \end{figure}
+
 
 \chapter{Finishing Up}
 Now we can control the PiCar through a simple application. The PiCar is ready for your next lab where you will learn how to send your own commands to run the PiCar using Python.
