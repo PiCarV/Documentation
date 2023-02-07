@@ -47,6 +47,8 @@ Dense layers are the most basic type of neural network layer. They are simply a 
 \section{Google Colab} 
 We can train our neural networks using our computers; however, this will probably be slow depending on your computer's power. To solve this hardware bottleneck, we will use a service called \href{https://colab.research.google.com/}{Google Colab}. This service provides a cloud-based platform for training neural networks and it is free for basic use. You will need a Google account in order to be able to train your own neural networks. This Lab document will walk you through how to use Google Colab but first, we must talk about theory.
 
+\pagebreak
+
 \section{Data}
 We will be using 2 datasets. The first is a training dataset that we will use to train our neural network. The second is a test dataset that we will use to test our neural network (validation data). You can download the datasets from Canvas labled as "TrainingData.7zip" and "TestingData.7zip". 
 
@@ -62,28 +64,29 @@ Dense layers are an array of weights that are placed side by side. Multiple laye
 
     \begin{figure}[h]
         \begin{center}
-        \includegraphics[width=0.5\textwidth]{denselayers.jpeg}
+        \includegraphics[width=0.4\textwidth]{denselayers.jpeg}
         \caption{Dense layers visualization}
         \label{fig:dense_layers}
         \end{center}
     \end{figure}
 
 The weights in each neuron in the dense layer are activated by the inputs. The activation of the neuron is the weighted sum of the inputs. The activation of the neuron is then passed through a non-linear activation function to get the output. The output of the neuron is then connected to the next layer. There are many different activation functions that can be used. A couple of common ones are displayed below.
- 
-\includegraphics[width=1\textwidth]{activation functions 1.jpg}
+\begin{center}
+    \includegraphics[width=0.7\textwidth]{activation functions 1.jpg}
+\end{center}
+
 \begin{figure}
     \begin{center}
-    \includegraphics[width=1\textwidth]{activation functions 2.jpg}
+    \includegraphics[width=0.7\textwidth]{activation functions 2.jpg}
     \caption{Common activation functions}
     \label{fig:activation_functions}
     \end{center}
 \end{figure}
 
-\pagebreak
-
 \section{Using Dense Layers in Keras}
 Keras is the Python library that we will use to create our neural networks. Keras is a high level library that allows us to create neural networks in a simple and easy way. Later you will see that we provide a pre-made template for you to use. However, you still need to understand how to create a neural network in Keras.
 
+\pagebreak
 
 \chapter{Start of the Lab}
 Before we can begin to mess with dense layers, we will learn how to get started with Google Colab. To begin, go to the \href{https://accounts.google.com/v3/signin/identifier?dsh=S1644191332%3A1675546780545376&continue=https%3A%2F%2Fcolab.research.google.com%2F&ec=GAZAqQM&passive=true&flowName=GlifWebSignIn&flowEntry=ServiceLogin&ifkv=AWnogHeZG2rpE0K9cdZU_E4kGDMUnn6If0bNDxEje1kgybK3_oj12LJ91m-WjXqGeI5Ljbego94BOQ}{Google Colab} website and either sign in with an existing Google account or sign up for an account.
@@ -112,13 +115,16 @@ This will open a page with a few differnt options. Select the tab called "GitHub
 Lastly, click "Lab Code/Lab Part 4/model.ipynb" and the demo model will open.
 
 \begin{center}
-    \includegraphics[scale=0.4]{openmodel.png}
+    \includegraphics[scale=0.3]{openmodel.png}
 \end{center}
 
 \section{Data Upload}
-Now we will upload the training and test datasets to Google Colab. 
+Now we will upload the training and test datasets to Google Colab. To do this, take the file you download from Canvas named "TrainingData.7zip" and upload it to your \href{https://drive.google.com/drive}{Google Drive}.
+Please make sure that you are signed into the same Google account as your Google Colab and that you do not put the training data into any folders. The TrainingData.7zip file should be at the surface of your Google Drive as shown below.
 
-To do this, take the file you download from Canvas named "TrainingData.7zip" and ------------------
+\begin{center}
+    \includegraphics[scale=0.5]{trainingdata.png}
+\end{center}
 
 \chapter{Running the Code}
 Now that Google Colab is set up and your data is uploaded, you can run the code. Simply open the model.ipynb file, click "Connect" at the top right of the page, and then run each code block one by one; make sure to wait for the previous code blocks to finish before running the next.
@@ -131,9 +137,13 @@ Now that Google Colab is set up and your data is uploaded, you can run the code.
 Once you get to Part 4 of the code, you are ready to build your neural network. You can modify the code provided to try to get a better training result. Your goal should be to have a small mean squared error (MSE) value and consistent validation accuracy. To do this you can try adding more layers, changing the activation functions, or changing the number of neurons in the hidden layers.
 
 \section{Saving the network}
-After you have trained your neural network, you can save it to a file. To do this, simply run the final code block. Before you do this, we recommend changing the name of the file to something more meaningful. After this block runs you can refresh the file browser on the left-hand side of the screen and you will see a file called model.h5 or whatever you decided to name it. This is the file that the Pi Car V will use to self-drive. You can download the file by right-clicking on it and selecting Download. 
+After you have trained your neural network, you can save it to a file. To do this, simply run the final code block. Before you do this, we recommend changing the name of the file to something more meaningful. After this block runs you can find a file called model.h5 or whatever you decided to name on the left files tab in Google Colab. Refer to the image below. This is the file that the Pi Car V will use to self-drive. You should right-click on the model.h5 file and download it to your computer. 
 
-\pagebreak
+\begin{center}
+    \includegraphics[scale=0.6]{savved.png}
+    \includegraphics[scale=0.6]{downloadh5.png}
+\end{center}
+
 
 \chapter{Running the Pi Car V} 
 Now that you have trained your neural network, you can run the Pi Car V. You should already have all the required dependencies installed. If you haven't, you can go back to lab 2.
